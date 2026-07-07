@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Validation-disentangled diagnostics for adaptive reward weighting in molecular generation"
+message: "Please cite the accompanying manuscript and this repository."
+type: software
+authors:
+  - family-names: "Author"
+    given-names: "First"
+repository-code: "https://github.com/zcs19850996159-boop/validation-disentangled-reward-weighting"
+abstract: "Reproducibility package for auditing validation-disentangled adaptive reward weighting in REINVENT4 molecular generation."
+license: MIT

@@ -1,0 +1,65 @@
+# 基线：静态权重多目标RL，用来验证环境 + 作为controller的对照组
+# 优化目标：QED（类药性，越高越好）+ 分子量落在 200-500 Da 区间
+# 这两个目标在真实场景里通常不冲突，先用来验证流程；
+# 后续做方法验证时建议换成更容易冲突的目标组合（比如活性 vs 毒性/SA score）
+
+run_type = "staged_learning"
+device = "cuda:0"                   # use the RTX 4080 on the remote server
+tb_logdir = "tb_logs"
+json_out_config = "_baseline.json"
+
+[parameters]
+summary_csv_prefix = "baseline"
+use_checkpoint = false
+purge_memories = false
+
+prior_file = "priors/reinvent.prior"
+agent_file = "priors/reinvent.prior"
+
+batch_size = 64
+randomize_smiles = true
+
+[learning_strategy]
+type = "dap"
+sigma = 128
+rate = 0.0001
+
+[diversity_filter]
+type = "IdenticalMurckoScaffold"
+bucket_size = 25
+minscore = 0.4
+minsimilarity = 0.4
+penalty_multiplier = 0.5
+
+### 单阶段先跑通，后续可以拆成多阶段做curriculum
+[[stage]]
+chkpt_file = "baseline_stage1.chkpt"
+
+termination = "simple"
+max_score = 0.8
+min_steps = 50
+max_steps = 200          # CPU上先跑200步验证流程，几分钟量级
+
+[stage.scoring]
+type = "geometric_mean"   # 当前REINVENT4只支持静态权重的算术/几何平均聚合
+
+[[stage.scoring.component]]
+[stage.scoring.component.QED]
+
+[[stage.scoring.component.QED.endpoint]]
+name = "QED"
+weight = 0.5              # <- 这个值就是你的controller后续要动态接管的量
+
+[[stage.scoring.component]]
+[stage.scoring.component.MolecularWeight]
+
+[[stage.scoring.component.MolecularWeight.endpoint]]
+name = "Molecular weight"
+weight = 0.5              # <- 同上
+
+transform.type = "double_sigmoid"
+transform.high = 500.0
+transform.low = 200.0
+transform.coef_div = 500.0
+transform.coef_si = 20.0
+transform.coef_se = 20.0

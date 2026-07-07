@@ -1,0 +1,15 @@
+{
+  "interpretation": "Signals are algorithmically and split independent, but high correlation means the validation oracle is not an orthogonal signal.",
+  "mean_abs_diff": 0.1321322478216136,
+  "n_scored": 120,
+  "pearson": 0.8684633070448888,
+  "reward_mean": 0.48883333333333334,
+  "reward_model": "training_reward",
+  "spearman": 0.8574692808917128,
+  "split": "test",
+  "top10_fraction_jaccard": 0.7142857142857143,
+  "top10_fraction_overlap_count": 10,
+  "top10_fraction_size": 12,
+  "validation_mean": 0.49141361264935585,
+  "validation_model": "controller_validation"
+}

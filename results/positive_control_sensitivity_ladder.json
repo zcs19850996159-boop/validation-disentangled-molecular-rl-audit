@@ -1,0 +1,126 @@
+{
+  "controller_action_step": 0.1,
+  "controller_mode": "deterministic",
+  "controller_reward_deadband": 0.01,
+  "interpretation": "Effects above the first failing level are detectable by this diagnostic; effects at or below failing levels lie near the current detection blind zone.",
+  "level_design": "Signal strength is varied by the frequency of validation windows whose Target_A drop exceeds the controller deadband. This is more informative for the thresholded deterministic controller than merely shrinking a per-window slope.",
+  "levels": [
+    {
+      "detectable_drop_events": 19,
+      "event_drop": 0.035,
+      "event_every": 1,
+      "label": "strong_every_window",
+      "n_shuffles": 1000,
+      "real": {
+        "actions_applied": 19,
+        "final_weight_target_a": 0.8698915256370023,
+        "final_weight_target_b": 0.13010847436299766,
+        "target_a_action_sum": 19,
+        "target_b_action_sum": 0
+      },
+      "sensitivity": {
+        "delta_final_weight_target_a": 0.1495586668228982,
+        "empirical_one_sided_p": 0.000999000999000999,
+        "passes_positive_control": true,
+        "z_vs_shuffled": 5.657455346911718
+      },
+      "shuffled_control": {
+        "final_weight_target_a_max": 0.802183888558582,
+        "final_weight_target_a_mean": 0.7203328588141041,
+        "final_weight_target_a_min": 0.6224593312018546,
+        "final_weight_target_a_sd": 0.026435677818392157,
+        "target_a_action_sum_mean": 9.499
+      },
+      "total_target_a_decline": 0.6650000000000006,
+      "updates": 20
+    },
+    {
+      "detectable_drop_events": 9,
+      "event_drop": 0.035,
+      "event_every": 2,
+      "label": "medium_every_2_windows",
+      "n_shuffles": 1000,
+      "real": {
+        "actions_applied": 9,
+        "final_weight_target_a": 0.7109495026250041,
+        "final_weight_target_b": 0.2890504973749959,
+        "target_a_action_sum": 9,
+        "target_b_action_sum": 0
+      },
+      "sensitivity": {
+        "delta_final_weight_target_a": 0.002310266783239423,
+        "empirical_one_sided_p": 0.6363636363636364,
+        "passes_positive_control": false,
+        "z_vs_shuffled": 0.08510946673466988
+      },
+      "shuffled_control": {
+        "final_weight_target_a_max": 0.802183888558582,
+        "final_weight_target_a_mean": 0.7086392358417647,
+        "final_weight_target_a_min": 0.6224593312018546,
+        "final_weight_target_a_sd": 0.02714465114018064,
+        "target_a_action_sum_mean": 8.924
+      },
+      "total_target_a_decline": 0.3150000000000003,
+      "updates": 20
+    },
+    {
+      "detectable_drop_events": 6,
+      "event_drop": 0.035,
+      "event_every": 3,
+      "label": "medium_every_3_windows",
+      "n_shuffles": 1000,
+      "real": {
+        "actions_applied": 6,
+        "final_weight_target_a": 0.6456563062257955,
+        "final_weight_target_b": 0.3543436937742045,
+        "target_a_action_sum": 6,
+        "target_b_action_sum": 0
+      },
+      "sensitivity": {
+        "delta_final_weight_target_a": -0.05455250184377192,
+        "empirical_one_sided_p": 0.988011988011988,
+        "passes_positive_control": false,
+        "z_vs_shuffled": -1.987081818737721
+      },
+      "shuffled_control": {
+        "final_weight_target_a_max": 0.7685247834990178,
+        "final_weight_target_a_mean": 0.7002088080695674,
+        "final_weight_target_a_min": 0.598687660112452,
+        "final_weight_target_a_sd": 0.02745357605779212,
+        "target_a_action_sum_mean": 8.517
+      },
+      "total_target_a_decline": 0.2100000000000002,
+      "updates": 20
+    },
+    {
+      "detectable_drop_events": 0,
+      "event_drop": 0.008,
+      "event_every": 1,
+      "label": "near_noise_every_window",
+      "n_shuffles": 1000,
+      "real": {
+        "actions_applied": 0,
+        "final_weight_target_a": 0.5,
+        "final_weight_target_b": 0.5,
+        "target_a_action_sum": 0,
+        "target_b_action_sum": 0
+      },
+      "sensitivity": {
+        "delta_final_weight_target_a": -0.1994382166663593,
+        "empirical_one_sided_p": 1.0,
+        "passes_positive_control": false,
+        "z_vs_shuffled": -7.163480889008653
+      },
+      "shuffled_control": {
+        "final_weight_target_a_max": 0.7685247834990178,
+        "final_weight_target_a_mean": 0.6994382166663593,
+        "final_weight_target_a_min": 0.6224593312018546,
+        "final_weight_target_a_sd": 0.027840964435651528,
+        "target_a_action_sum_mean": 8.481
+      },
+      "total_target_a_decline": 0.15200000000000014,
+      "updates": 20
+    }
+  ],
+  "purpose": "Sensitivity ladder for the positive-control diagnostic. It estimates the synthetic effect scale at which validation-driven weight updates become indistinguishable from shuffled controls."
+}

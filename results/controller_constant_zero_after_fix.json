@@ -1,0 +1,138 @@
+{
+  "action_applied": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "action_step": 0.15,
+  "actions": [
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    },
+    {
+      "DRD2_activity": 0,
+      "Molecular weight": 0,
+      "QED": 0
+    }
+  ],
+  "component_names": [
+    "DRD2_activity",
+    "QED",
+    "Molecular weight"
+  ],
+  "constant_scores": {
+    "DRD2_activity": 0.0,
+    "Molecular weight": 0.0,
+    "QED": 0.0
+  },
+  "entropy_coef": 0.001,
+  "final_weights": {
+    "DRD2_activity": 0.34,
+    "Molecular weight": 0.33,
+    "QED": 0.33
+  },
+  "initial_weights": {
+    "DRD2_activity": 0.34,
+    "Molecular weight": 0.33,
+    "QED": 0.33
+  },
+  "reward_deadband": 0.0,
+  "rewards": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "seed": 17,
+  "updates": 15
+}

@@ -1,0 +1,736 @@
+%Version 3.1 December 2024
+% Draft manuscript prepared in the Springer Nature sn-jnl template.
+%
+% This file is a filled draft derived from C:/Users/admin/Downloads/sn-article.tex.
+% It keeps the template structure but replaces the sample text with the current
+% manuscript draft for the validation-driven dynamic-weighting project.
+
+\documentclass[referee,lineno,pdflatex,sn-basic]{sn-jnl}
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{url}%
+\usepackage{tabularx}
+\usepackage{array}
+
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%
+\newtheorem{proposition}[theorem]{Proposition}%
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+
+\begin{document}
+
+\title[Validation-Disentangled Diagnostics]{A Validation-Disentangled Diagnostic Framework for Adaptive Reward Weighting in Molecular Generation}
+
+%% Author information is intentionally left for completion before submission.
+%% Replace these fields before submission.
+\author*[1]{\fnm{First} \sur{Author}}\email{}
+\author[1]{\fnm{Second} \sur{Author}}\email{}
+\author[1]{\fnm{Third} \sur{Author}}\email{}
+
+\affil*[1]{\orgdiv{Department}, \orgname{Institution}, \orgaddress{\city{City}, \country{Country}}}
+
+\abstract{Multi-objective molecular generation usually optimizes a scalarized reward with manually chosen static weights. A natural alternative is to adapt the weights during training using independent validation feedback, especially when a cheap training proxy may not track the desired downstream property. We investigated this idea in REINVENT4 by separating the reward used to train the molecular generator from the signal used to update a dynamic weight controller. We combined random-validation controls, no-signal and frozen-policy diagnostics, positive-control sensitivity analysis, repeat-level uncertainty estimation, and hindsight upper-bound analysis. In DRD2/QED/molecular-weight optimization, ten paired repeats gave a mean real-vs-random validation delta of -0.0016 with a 95\% paired-bootstrap confidence interval of [-0.0102, +0.0063]. In a stronger-conflict DRD2 activity/synthetic-accessibility setting, five paired repeats gave -0.0007 with confidence interval [-0.0038, +0.0022]. Strong synthetic positive controls confirmed that the diagnostic pipeline can detect coherent validation-weight relationships, but sparser or near-noise signals fell below the stable detection regime. Hindsight analysis showed similar exploitable headroom in real- and random-validation trajectories. These results do not support a positive efficacy claim for the current controller. Instead, they show that any validation-driven effect in the tested settings is small relative to stochastic variability and below the practical effect scale needed to justify expensive target expansion.}
+
+\keywords{molecular generation, reinforcement learning, reward weighting, validation signal, REINVENT4, QSAR, molecular docking}
+
+\maketitle
+
+\section{Introduction}\label{sec:introduction}
+
+Multi-objective molecular generation often requires balancing activity, drug-likeness, synthetic accessibility, molecular size, selectivity, toxicity risk, and other design constraints. In many reinforcement-learning (RL) and scoring-based workflows, these objectives are combined through a scalar reward,
+\begin{equation}
+R(x; \mathbf{w}) = \sum_{k=1}^{K} w_k c_k(x),
+\label{eq:scalar_reward}
+\end{equation}
+where $x$ is a generated molecule, $c_k$ is the score for objective $k$, and $\mathbf{w}$ is a vector of user-defined weights. Static scalarization is simple and practical, but it can be brittle: a weight vector that works early in training may become poorly calibrated later, and a weight vector tuned for one oracle or target may not transfer to another.
+
+Validation-driven dynamic weighting is an attractive alternative. Rather than fixing $\mathbf{w}$ for the full run, a controller can monitor independent validation performance and shift weight toward objectives whose validation behavior is deteriorating or underperforming. In principle, this could reduce over-optimization of the training proxy and better align generated molecules with downstream validation criteria. This idea is related to adaptive control and dynamic weighting more broadly, and it was also motivated here by our prior work on validation-driven adaptive loss weighting in cross-lingual biomedical named entity recognition~\cite{zhang2026validationner}. However, molecular generation has a different failure mode: generated molecules are sampled from a changing policy, oracle signals can be noisy or weak, and a controller can appear to adapt even when it is responding to stochastic fluctuations rather than meaningful validation information.
+
+The central methodological requirement of this study is therefore separation between two signal streams. The reward used to train the molecular generator must not be identical to the validation signal used to update the controller. If the same model, data, or scoring pipeline drives both molecule optimization and controller adaptation, the experiment no longer tests whether validation feedback adds information beyond the training reward. It tests only whether the controller can chase the same proxy through another route.
+
+We implemented this separation in REINVENT4 without modifying core REINVENT4 source files. The generator was trained with ordinary scoring components, while controller updates were supplied by an independent validation function called periodically on separately sampled molecules. We first attempted to use AutoDock Vina docking as a more biologically distinct validation oracle. The docking branch passed a DRD2 redocking cross-check for one antagonist-bound structure, but the active-vs-negative ranking calibration remained below our practical gate. We therefore proceeded with a lower-cost QSAR fallback: RandomForest activity prediction as the training reward and an independently trained SVM as the controller validation proxy, with scaffold-disjoint splitting.
+
+The resulting experiments did not support a positive efficacy claim for the tested dynamic controllers. Instead, they revealed that a validation-driven molecular controller needs a systematic audit framework. Random-validation controls were essential: several controller variants produced trajectories that were nearly indistinguishable from controls receiving shuffled or meaningless validation feedback. Constant-signal and frozen-policy diagnostics exposed controller drift and action-space bias. Positive-control sensitivity tests showed that the diagnostic pipeline can detect strong synthetic validation-weight relationships, while also showing that sparser or near-noise signals fall below the stable detection regime. Finally, paired-run bootstrap, power analysis, and hindsight upper bounds helped distinguish small, underpowered effects from practically useful validation-specific gains.
+
+The main contribution of this paper is therefore not a claim that dynamic reward weighting improves molecular generation. It is a validation-disentangled diagnostic framework for asking whether such a claim is justified (Figure~\ref{fig:framework}). Across two DRD2 settings, real validation feedback did not outperform random-validation controls by a reliable or practically useful margin. This negative result is scientifically useful because it identifies where the validation-driven hypothesis breaks down under realistic oracle noise and small-repeat experimental budgets.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\linewidth]{figures (2).png}
+\caption{Validation-disentangled diagnostic framework for adaptive reward weighting. 
+The molecular generator is updated using a scalarized training reward, while 
+separately sampled validation-only molecules are scored by an independent validation 
+signal at checkpoints. The weight controller receives only validation summaries and 
+updates the objective weights used in subsequent reward scalarization. The diagnostic 
+audit layer tests whether controller behavior is genuinely validation-specific through 
+random-validation controls, constant-signal and frozen-policy checks, positive-control 
+sensitivity analysis, paired-bootstrap and power analysis, and hindsight upper-bound 
+analysis.}
+\label{fig:framework}
+\end{figure}
+
+\section{Related work}\label{sec:related}
+
+\subsection{Multi-objective molecular generation}\label{subsec:rw_moo}
+
+Deep generative models for molecules have been developed across SMILES-based recurrent models, continuous latent-variable models, graph generative models, genetic algorithms, and RL optimizers \cite{ref-segler-rnn,ref-gomez-vae,ref-popova-release,ref-jtvae,ref-gcpn,ref-moldqn,ref-graphga}. RL-based de novo molecular design often uses scalar reward functions to guide generative policies toward desired molecular properties. REINVENT and related policy-gradient approaches provide a flexible framework for combining activity predictors, physicochemical scores, and structural constraints into molecular optimization objectives \cite{ref-reinvent}. In practice, these objectives often combine learned activity predictors with drug-likeness or feasibility scores such as QED \cite{ref-qed} and synthetic accessibility \cite{ref-sa}.
+
+The field has also moved toward standardized benchmarking. GuacaMol, MOSES, Therapeutics Data Commons, and practical molecular-optimization benchmarks emphasize that apparent success depends strongly on oracle choice, evaluation budget, diversity, and task definition \cite{ref-guacamol,ref-moses,ref-tdc,ref-pmo}. Multi-objective optimization can be framed through scalarization, Pareto dominance, preference-based selection, constrained generation, and Bayesian optimization \cite{ref-miettinen,ref-deb-nsga2,ref-fromer-coley}. These approaches differ in how they represent trade-offs, but they share a common evaluation challenge: a generated molecule may look strong under the training scalarization while failing under a downstream or more expensive validation oracle.
+
+\subsection{Adaptive reward weighting and validation-driven control}\label{subsec:rw_adaptive}
+
+Dynamic weighting has a long history in adaptive control, where controllers update their behavior based on measured system performance \cite{ref-adaptive-control}. In RL, multi-objective sequential decision-making and multi-objective deep RL study how agents handle changing or uncertain preferences across objectives \cite{ref-roijers-survey,ref-mossalam-modrl}. Dynamic-weight settings explicitly ask policies to adapt when objective weights change over time \cite{ref-abels-dynamic}. In supervised multi-task learning, related ideas appear in uncertainty weighting, gradient normalization, and meta-learned validation-driven task weighting \cite{ref-kendall-uncertainty,ref-gradnorm,ref-autolambda}. More broadly, held-out validation feedback is central to gradient-based hyperparameter optimization and bilevel meta-learning \cite{ref-maclaurin-hyperopt,ref-franceschi-bilevel}. The motivation is similar: if a model is over-optimizing one component or underperforming on another, the training process can be redirected by changing the relative weights. In molecular generation, however, the generated distribution and the oracle landscape both change during training. A controller may therefore appear adaptive even when it is responding to stochastic variation, initialization bias, or repeated measurement of the same proxy.
+
+The key distinction in this work is that validation feedback is not treated as merely a held-out split of the training metric.Recent dynamic reward-weighting studies have addressed related problems, but under
+different feedback assumptions. Lu et al. proposed dynamic reward weighting for
+multi-objective LLM alignment, where adaptive weights are optimized within the same
+online alignment objective family rather than audited against an independently
+measured downstream oracle~\cite{lu2026dynamicreward}. Similarly, Min et al.
+introduced DynaOpt and C-DynaOpt, non-contextual and contextual bandit methods
+that dynamically adjust multiple reward weights during counselor-reflection
+generation, while the feedback remains tied to the multi-reward training stream for
+text generation~\cite{min2024dynaopt}. In contrast, our study tests a stricter
+validation-disentanglement requirement: controller feedback is scored by a separately
+trained model, such as an SVM QSAR proxy, or by a mechanistically distinct candidate
+oracle, such as docking. We explicitly test the stricter requirement that controller feedback should be separated from the training reward, ideally through a different oracle. This is especially important for benchmark targets such as DRD2, GSK3B, and JNK3, where common reward functions use QSAR activity classifiers trained from public bioactivity resources such as ChEMBL and ExCAPE-DB \cite{ref-chembl,ref-excape}. If a controller is updated by the same classifier that supplies the training reward, a positive result could reflect proxy chasing rather than validation-driven improvement. This emphasis is consistent with recent cheminformatics work arguing that
+realistic validation of molecular generative models is intrinsically difficult:
+retrospective validation can be biased, while prospective validation is costly and
+subject to selection effects~\cite{handa2023difficulty}. Our contribution is
+complementary: rather than proposing another molecular generator, we audit whether
+adaptive reward-weight controllers truly use validation-specific information.
+
+\subsection{Oracle reliability and over-optimization}\label{subsec:rw_oracle}
+
+Molecular docking is often proposed as a more biologically grounded validation signal, but docking scores are not automatically reliable. They depend on receptor structure, protonation, ligand preparation, grid definition, and target-specific calibration. DRD2 is a useful example because antagonist-bound receptor structures exist, including the risperidone-bound structure reported by Wang and colleagues \cite{ref-drd2-structure}. We therefore treated docking not as an assumed ground truth but as an oracle requiring its own self-check. The negative docking calibration reported below is part of the audit logic rather than a side failure.
+
+QSAR oracles also require caution. Fingerprint-based classifiers built with common cheminformatics and machine-learning tools such as RDKit \cite{ref-rdkit} and scikit-learn \cite{ref-sklearn} are useful low-cost proxies, but they can be over-optimized by a generative model. Prior benchmark studies have shown that strong scores on popular molecular objectives can coexist with unrealistic, hard-to-synthesize, or distributionally fragile molecules \cite{ref-gao-synth,ref-pmo}. Likewise, docking benchmarks require decoys and calibration sets that avoid trivial analogue or property bias; DUD-E is a classic example of a decoy-design effort motivated by this concern \cite{ref-dude}. The present study follows the same principle at the controller level: before a validation signal can drive adaptive reward weighting, the signal itself must be checked for reliability and for separation from the training reward.
+
+\subsection{Evaluation controls for generative molecular RL}\label{subsec:rw_controls}
+
+The stochasticity of molecular RL makes single-run comparisons particularly fragile. Seed-to-seed variation, changing generated distributions, and noisy validation batches can all produce apparent improvements. For that reason, controller evaluation should include random-validation controls, no-signal controls, repeat-level uncertainty estimates, and sensitivity checks. Bootstrap methods \cite{ref-bootstrap} are useful here only when applied at the correct experimental unit: paired repeats, not individual molecules within a run, and statistical testing should be interpreted in light of experimental power and multiple sources of variance \cite{ref-dror-significance}. This paper frames these controls as part of the method rather than as post-hoc justifications, because without them a validation-driven controller can be mistaken for a mechanism when it is only reacting to noise.
+
+\section{Results}\label{sec:results}
+
+\subsection{Docking self-check identified a weak but insufficient DRD2 validation oracle}\label{subsec:docking}
+
+We first attempted to use AutoDock Vina as a validation-only signal for DRD2. The intended design was to train the generator with a cheap QSAR reward and update the controller using a docking score computed on a separate validation batch. This would have provided a stronger separation between training reward and controller feedback than using two QSAR models.
+
+The initial DRD2 structure, PDB 6CM4 with co-crystallized risperidone, produced a borderline redocking result around 2.33~\AA, slightly above the 2~\AA{} gate. Symmetry-aware RMSD, protonation checks, and grid-box checks did not explain the discrepancy. We therefore cross-checked the same pipeline on an alternative antagonist-bound DRD2 structure, PDB 7DFP with spiperone. The 7DFP/SIP redocking passed the 2~\AA{} gate, indicating that the docking pipeline itself was not globally broken.
+
+We then performed an antagonist-like matched active-vs-negative calibration on 7DFP. To reduce analogue and physicochemical-property bias, actives were filtered by similarity to the co-crystallized antagonist and paired with low-activity negatives matched on basic properties. One silicon-containing active, CHEMBL2204343, failed ligand preparation and was excluded, leaving 63 actives and 64 negatives. The matched calibration gave AUROC 0.565 with one-sided permutation $p=0.049$. Thus the score direction was plausibly non-random, but the effect size was below the practical gate AUROC $\geq 0.60$.
+
+This result should not be interpreted as evidence that docking is useless. Rather, the current DRD2\_7DFP docking calibration was not reliable enough to act as the controller oracle. We therefore paused docking as the main validation signal and kept it as a side branch.
+
+\subsection{QSAR fallback preserved model separation but not biological independence}\label{subsec:qsar}
+
+For the main controller pilot we used a QSAR fallback. The training reward was a RandomForest classifier on Morgan fingerprints, while the controller validation signal was an independently trained SVM classifier. The activity data were derived from public DRD2 bioactivity resources following the ChEMBL/ExCAPE-DB convention used in several goal-directed molecular generation benchmarks \cite{ref-chembl,ref-excape,ref-gcpn,ref-moldqn}. The data were split by scaffold into reward-training, validation-training, and common holdout pools. On the scaffold-held-out test set, the RF achieved AUROC 0.961 and the SVM achieved AUROC 0.941. Their held-out predictions had Pearson correlation 0.868 and Spearman correlation 0.857.
+
+This supports an independent-model validation proxy, but not a fully orthogonal biological oracle. To connect this fallback to the docking branch, we scored the 127 molecules from the matched 7DFP Vina calibration with both QSAR models and compared RF, SVM, and docking reward $-\mathrm{Vina}$ (Table~\ref{tab:triangulation}; Figure~\ref{fig:triangulation}). On this subset, RF and SVM remained moderately correlated (Pearson 0.698, Spearman 0.625), but their top-10\% candidate sets did not overlap. This is not contradictory: overall continuous-score correlation does not imply agreement on the highest-ranked molecules, which are often the candidates that matter most in molecular generation. Both QSAR signals were only weakly aligned with Vina, with bootstrap confidence intervals crossing zero.
+
+\begin{table}[!t]
+\caption{RF/SVM/Vina signal triangulation on the DRD2\_7DFP calibration set.}
+\label{tab:triangulation}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}p{0.30\linewidth}p{0.22\linewidth}p{0.22\linewidth}p{0.18\linewidth}@{}}
+\toprule
+Signal pair & Pearson $r$ (95\% CI) & Spearman $\rho$ (95\% CI) & Top-10\% overlap \\
+\midrule
+RF reward vs SVM validation
+& 0.698 [0.601, 0.781]
+& 0.625 [0.536, 0.690]
+& 0/13; Jaccard 0.000 \\
+
+RF reward vs Vina reward
+& 0.105 [-0.046, 0.252]
+& 0.036 [-0.121, 0.192]
+& 0/13; Jaccard 0.000 \\
+
+SVM validation vs Vina reward
+& 0.106 [-0.073, 0.268]
+& 0.013 [-0.168, 0.197]
+& 1/13; Jaccard 0.040 \\
+\botrule
+\end{tabularx}
+
+\vspace{2pt}
+\raggedright
+\footnotesize
+Note: Vina reward is defined as $-\mathrm{Vina}$ score, so higher values indicate better docking scores.
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{fig2_signal_triangulation.pdf}
+\caption{Triangulation among training reward, validation proxy, and docking signal on the DRD2\_7DFP calibration subset. Panels show RF reward versus SVM validation, RF reward versus $-\mathrm{Vina}$, and SVM validation versus $-\mathrm{Vina}$. Active and negative molecules are plotted separately; in-panel annotations report Pearson correlation, Spearman correlation, and top-10\% overlap.}\label{fig:triangulation}
+\end{figure}
+
+These results motivate cautious language. The QSAR fallback is not merely a duplicate of the RF reward, especially at the top-candidate level, but it is also not a true biological oracle. Meanwhile, the current Vina calibration is too weak to replace it as the main controller feedback.
+
+\subsection{Policy-gradient controller diagnostics exposed validation-insensitive behavior}\label{subsec:pg_diagnostics}
+
+We implemented a policy-gradient dynamic weight controller with discrete actions that increase, decrease, or hold objective weights. The controller received validation scores periodically and updated its policy from a scalar controller reward. Initial DRD2/QED/molecular-weight runs appeared to show some final-step improvement, but random-validation controls produced nearly indistinguishable weight trajectories. This indicated that the controller was not reliably using the content of the validation signal.
+
+Constant-validation diagnostics then revealed a logic bug: when validation reward had no information content, the controller could still sample and execute actions. A no-signal input should lead to no movement. We fixed this condition so that zero or baseline-free validation reward does not trigger a policy update or action. Frozen-initial-policy diagnostics further showed that much of the action pattern could be explained by the initialized stochastic policy rather than learned validation response. These diagnostics were essential because ordinary real-vs-static comparisons would have allowed a false positive interpretation.
+
+After this, we used a simpler deterministic validation-response controller as a sanity baseline. This controller removes policy-gradient sampling. If objective $k$ drops by more than a deadband $\epsilon$ relative to the previous validation window, its weight is increased by a fixed action step and the weights are renormalized. If the validation stream contains no drop exceeding the deadband, the controller holds its weights. This baseline tests whether the validation signal contains any simple exploitable structure before investing in more complex RL credit assignment.
+
+\subsection{Positive controls defined the detection regime}\label{subsec:positive_control}
+
+The negative molecular results would be uninformative if the diagnostic pipeline could not detect an effect even when one was deliberately present. We therefore constructed a synthetic validation stream with two objectives. Target A deteriorated over time and Target B remained approximately constant. A validation-driven controller should upweight Target A. Shuffled controls preserved the same marginal validation values but broke the temporal relationship.
+
+The main-text positive control is the sensitivity-ladder experiment with 1000 shuffled controls (Table~\ref{tab:positive}; Figure~\ref{fig:positive_ladder}). A strong signal with Target A dropping beyond the deadband in every validation window was detected robustly: final Target A weight delta +0.150, $z=5.657$, empirical one-sided $p=0.0010$. However, sparser medium signals were not reliably distinguishable from shuffled controls, and a near-noise signal below the deadband produced no real-controller action.
+
+\begin{table}[h]
+\caption{Synthetic positive-control sensitivity ladder. Signal strength is varied by the number of validation windows whose Target A drop exceeds the controller deadband.}\label{tab:positive}
+\small
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+Level & Events & Real A & Shuffled A & Delta & $z$ & Emp. $p$\\
+\midrule
+Strong, every window & 19 & 0.870 & 0.720 & +0.150 & 5.657 & 0.0010\\
+Medium, every 2 windows & 9 & 0.711 & 0.709 & +0.002 & 0.085 & 0.6364\\
+Medium, every 3 windows & 6 & 0.646 & 0.700 & -0.055 & -1.987 & 0.9880\\
+Near-noise, below deadband & 0 & 0.500 & 0.699 & -0.199 & -7.163 & 1.0000\\
+\botrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\linewidth]{fig3_positive_control_ladder.pdf}
+\caption{Synthetic positive-control sensitivity ladder used to calibrate the detection regime of the diagnostic pipeline. Grey ranges show shuffled-control final Target A weights, squares mark shuffled means, and blue/red points mark the real synthetic validation stream. Only the dense strong signal separates cleanly from shuffled controls.}\label{fig:positive_ladder}
+\end{figure}
+
+This result does not mean that the molecular controller is effective. It means the audit pipeline can detect large coherent validation-weight relationships, while also showing that sparse or near-noise effects are in the detection blind zone of the current deterministic rule.
+
+\subsection{DRD2/QED/molecular-weight runs were centered near zero after ten repeats}\label{subsec:drd2_qed_mw}
+
+We extended the DRD2/QED/molecular-weight deterministic comparison from five to ten paired real-vs-random validation repeats. The primary metric was last-50-step mean independent validation activity, because the validation signal was the independently trained SVM. Static equal-weight repeats provided an empirical noise reference.
+
+The expanded result removed the weak positive direction seen in the initial five-repeat pilot (Table~\ref{tab:paired}; Figure~\ref{fig:paired_deltas}). The last-50-step mean real-vs-random delta was -0.0016, with paired-delta standard deviation 0.0141 and 95\% paired-bootstrap confidence interval [-0.0102, +0.0063]. Five of ten repeats were positive, giving no directional evidence beyond chance. Secondary metrics were consistent with this conclusion: the all-row mean delta was -0.0021 with confidence interval [-0.0077, +0.0036], and the top-10 mean delta was -0.0033 with confidence interval [-0.0108, +0.0038]. The final-step metric was directionally positive (+0.0146), but its confidence interval [-0.0028, +0.0307] was wide and overlapped zero, making it a noisy endpoint rather than reliable evidence of validation-specific improvement.
+
+\begin{table}[!t]
+\caption{Paired real--random validation effects.}
+\label{tab:paired}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}p{0.22\linewidth}ccp{0.24\linewidth}c@{}}
+\toprule
+Setting & Primary metric & $\Delta$ & SD & 95\% CI & Sign $p$ \\
+\midrule
+DRD2/QED/MW
+& Last-50 activity
+& -0.0016
+& 0.0141
+& [-0.0102, +0.0063]
+& 1.000 \\
+
+DRD2 activity/SA
+& Last-50 joint
+& -0.0007
+& 0.0039
+& [-0.0038, +0.0022]
+& 1.000 \\
+\botrule
+\end{tabularx}
+
+\vspace{2pt}
+\raggedright
+\footnotesize
+Note: $\Delta$ denotes real-validation minus random-validation control. Bootstrap confidence intervals are computed over paired repeats rather than generated molecules. Direction was 5/10 positive for DRD2/QED/MW and 3/5 positive for DRD2 activity/SA.
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{fig4_paired_deltas.pdf}
+\caption{Paired repeat-level real-vs-random validation effects. (a) Points show paired repeat deltas for the primary metrics, black intervals show mean deltas with 95\% paired-bootstrap confidence intervals, and shaded bands show static-repeat noise references. The DRD2/QED/MW panel uses the ten-repeat extension, whereas the activity/SA panel uses the five-repeat fast-gate experiment. (b) Secondary DRD2/QED/MW metrics from the ten-repeat extension show that the apparent final-step positivity is not stable across the all-row, last-50-step, and top-10 summaries. Confidence intervals are computed over paired runs, not individual molecules.}\label{fig:paired_deltas}
+\end{figure}
+
+The DRD2/QED/molecular-weight result is therefore best interpreted as a null result after repeat extension. The earlier five-repeat weak positive direction was not stable, and the ten-repeat estimate is centered near zero with a confidence interval spanning both small positive and small negative effects.
+
+\subsection{A stronger-conflict activity/SA setting did not rescue the controller}\label{subsec:activity_sa}
+
+One possible explanation for the weak DRD2/QED/molecular-weight result was that the objectives did not conflict strongly enough. We therefore tested a DRD2 activity/synthetic-accessibility setting. The training reward used the RF activity predictor and a cheap RDKit complexity proxy. The validation signal used the SVM activity predictor and the exact RDKit Contrib synthetic-accessibility score converted to a 0--1 reward where higher means easier synthesis. The primary metric was
+\begin{equation}
+m_{\mathrm{joint}} = \sqrt{m_{\mathrm{activity}} m_{\mathrm{SA}}}.
+\label{eq:joint_metric}
+\end{equation}
+
+Because the full 300-step queue was expensive and the mechanism was uncertain, we used a fast gate with 120 steps, five paired real-vs-random repeats, and two static equal-weight repeats. The mean paired real-vs-random delta was -0.0007 with 95\% paired-bootstrap confidence interval [-0.0038, +0.0022]. Three of five repeats were positive, giving no meaningful sign-test evidence. The static repeat gap in the same fast-gate setting was +0.0128, much larger than the observed real-vs-random mean delta.
+
+Thus, making the objective conflict stronger did not reveal a validation-specific advantage for the deterministic controller.
+
+\subsection{Power analysis calibrated what the repeat budgets can and cannot detect}\label{subsec:power}
+
+We estimated post-hoc power using Monte Carlo paired $t$ tests with the observed repeat-level standard deviation for each setting. For DRD2/QED/molecular-weight, the ten-repeat extension had standard deviation 0.0141. Under this noise scale, the observed effect magnitude of 0.0016 had very low power: 0.061 for a two-sided test and 0.094 for a one-sided positive test. A small effect of 0.0050 also remained poorly powered. In contrast, a practical effect of 0.0150 would have much higher power, 0.850 two-sided and 0.928 one-sided. For activity/SA, the observed effect was also near zero. Given its lower observed paired-delta variance, a practical effect around 0.010 would likely have been detected.
+
+\begin{table}[h]
+\caption{Post-hoc power estimates for paired-repeat experiments. Power was estimated by Monte Carlo one-sample paired $t$ tests using the observed repeat-level standard deviation for each setting.}\label{tab:power}
+\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Setting & $n$ & Assumed effect & Two-sided power & One-sided power\\
+\midrule
+DRD2/QED/MW & 10 & Observed 0.0016 & 0.061 & 0.094\\
+DRD2/QED/MW & 10 & Small 0.0050 & 0.172 & 0.273\\
+DRD2/QED/MW & 10 & Static-repeat gap 0.0088 & 0.424 & 0.572\\
+DRD2/QED/MW & 10 & Practical 0.0100 & 0.518 & 0.666\\
+DRD2/QED/MW & 10 & Practical 0.0150 & 0.850 & 0.928\\
+Activity/SA & 5 & Observed 0.0007 & 0.063 & 0.101\\
+Activity/SA & 5 & Practical 0.0100 & 0.987 & 0.999\\
+Activity/SA & 5 & Practical 0.0150 & 1.000 & 1.000\\
+\botrule
+\end{tabular}
+\end{table}
+
+The conclusion is therefore calibrated rather than absolute. We do not rule out arbitrarily tiny validation-driven effects. We do rule against a practically useful effect large enough to motivate expensive GSK3B/JNK3 expansion under the tested settings.
+
+\subsection{Hindsight upper bounds did not reveal hidden validation-specific headroom}\label{subsec:hindsight}
+
+Finally, we asked whether the logged trajectories contained hidden exploitable structure that the tested controllers failed to use. The hindsight diagnostic is an observed-data upper bound: at each validation window, an oracle chooses the best observed run after seeing the outcomes. This is not a counterfactual simulation of molecules that would have been generated under unseen weights, but it estimates the visible headroom in the trajectories already collected.
+
+For activity/SA, the all-run oracle improved over static by +0.015 across all windows and +0.018 over the last four windows. However, the random-control-only oracle was slightly better than the real-validation-only oracle in both views: +0.012 vs +0.011 over all windows and +0.015 vs +0.014 over the last four windows. Top-100 observed molecule pools showed the same pattern: real 0.840, random-control 0.846, static 0.814. For DRD2/QED/molecular-weight, oracle gains were even smaller, and random-control top pools again matched or exceeded real-validation pools.
+
+Therefore, the failure to obtain a positive result is not easily explained by a large hidden validation-specific opportunity that a better controller could have exploited from these trajectories. More complex controllers may still be worth exploring under stronger oracles, but the current logged data do not justify that expansion by themselves.
+
+\section{Methods}\label{sec:methods}
+
+\subsection{Validation-disentangled controller principle}\label{subsec:principle}
+
+The controller is designed around a two-signal constraint. The molecular generator is trained using the ordinary REINVENT scoring result, denoted here as $\mathbf{c}_{\mathrm{train}}(x)$. At validation checkpoints, a separate validation batch is sampled and scored by a validation function $\mathbf{v}(x)$ that does not contribute to the generator reward. Controller updates are based on validation summaries, not on the same per-molecule component scores used to train the generator.
+
+This design prevents a leakage pattern in which the controller and generator both optimize the same proxy. It also makes random-validation controls meaningful: if replacing $\mathbf{v}$ by a shuffled or random validation stream produces the same weight history and molecular outcomes, the controller has not demonstrated validation-specific behavior.
+
+\subsection{Implementation in REINVENT4}\label{subsec:implementation}
+
+All modifications were implemented through a wrapper/monkeypatch layer and external plugin-style scoring commands. We did not edit REINVENT4 core source files. The controller intercepted the scoring/training loop, periodically sampled a validation batch, called an independent validation function, and updated objective weights. Training rewards still used the normal REINVENT scorer aggregation.
+
+Validation molecules were sampled from the current REINVENT sampling model but were not used to compute the training reward. Invalid SMILES and duplicate molecules within the validation batch were skipped. The implementation attempted up to four sampling passes to fill each validation batch. For DRD2/QED/molecular-weight deterministic runs, validation was triggered every 20 training steps with a validation batch of 64 molecules. For the activity/SA fast-gate runs, validation was triggered every 15 training steps with a validation batch of 32 molecules. Controller state, validation scores, actions, old and new weights, and diagnostic flags were written to JSONL history files for post-hoc analysis.
+
+\subsection{Policy-gradient controller}\label{subsec:policy_controller}
+
+The policy-gradient controller maintained a discrete action distribution over each component. Actions could increase, decrease, or hold a component weight. A scalar controller reward was derived from changes in validation performance, and policy updates were applied only when validation reward carried signal after the no-signal bug fix. We used this controller primarily as a diagnostic object, because random-validation controls and frozen-policy tests showed that the initial policy and action-space structure could dominate the observed trajectory.
+
+The policy state for each component contained the current normalized weight, current validation score, and validation-score change from the previous validation window. A two-hidden-layer neural policy with 64 hidden units per layer produced three logits per component, corresponding to actions $a_k\in\{-1,0,+1\}$. The default learning rate was $10^{-3}$, entropy coefficient $10^{-3}$, and moving-average reward baseline coefficient 0.9. The scalar controller reward was the mean validation-score change minus a floor penalty proportional to the largest validation drop:
+\begin{equation}
+r_t = \frac{1}{K}\sum_{k=1}^{K}(v_{k,t}-v_{k,t-1}) - \lambda \max_k \max(0, v_{k,t-1}-v_{k,t}),
+\label{eq:controller_reward}
+\end{equation}
+with $\lambda=0.25$ by default. Policy updates were suppressed when there was no previous validation window or when $|r_t|$ did not exceed the configured deadband.
+
+\subsection{Deterministic validation-response controller}\label{subsec:deterministic}
+
+The deterministic controller was used as a sanity baseline. Let $v_{k,t}$ be validation score for component $k$ at validation checkpoint $t$. With deadband $\epsilon=0.02$ in the deterministic molecular runs, the action is
+\begin{equation}
+a_{k,t} =
+\begin{cases}
+1, & v_{k,t} - v_{k,t-1} < -\epsilon,\\
+0, & \mathrm{otherwise}.
+\end{cases}
+\label{eq:deterministic}
+\end{equation}
+Applied actions update weights multiplicatively,
+\begin{equation}
+\tilde{w}_{k,t+1}= \mathrm{clip}\left(w_{k,t}\exp(\alpha a_{k,t}), w_{\min}, w_{\max}\right),
+\label{eq:weight_update}
+\end{equation}
+followed by renormalization to preserve the initial total weight,
+\begin{equation}
+w_{k,t+1}= \tilde{w}_{k,t+1}\frac{\sum_j w_{j,0}}{\sum_j \tilde{w}_{j,t+1}}.
+\label{eq:renorm}
+\end{equation}
+The default action step was $\alpha=0.15$, with $w_{\min}=0.05$ and $w_{\max}=5.0$. Unless otherwise stated, the deterministic controller did not decrease weights on improvement. This intentionally simple design asks whether validation feedback contains any reactive structure that can beat random-validation controls.
+
+\subsection{Random-validation, constant-signal, and frozen-policy diagnostics}\label{subsec:diagnostics}
+
+Random-validation controls preserve the training setup but break the relationship between validation scores and controller decisions. Operationally, the controller received validation values with the same marginal scale as real validation but with the temporal relationship to the run disrupted, so any apparent improvement could not be attributed to meaningful feedback. Constant-signal tests feed validation streams with no information content and require no action. Frozen-policy diagnostics run the initialized policy without gradient updates to measure architecture or initialization bias. These tests were applied before scaling experiments because they can expose false-positive controller behavior at low cost.
+
+\subsection{QSAR models}\label{subsec:qsar_methods}
+
+The QSAR fallback used Morgan fingerprints \cite{ref-morgan} computed with radius 2 and 2048 bits in RDKit \cite{ref-rdkit}. Input molecules were deduplicated by SMILES, assigned Bemis--Murcko scaffolds \cite{ref-murcko}, and split by scaffold into three disjoint pools: 50\% for the RF training reward, 25\% for the SVM validation model, and the remaining 25\% as a common holdout set. If a scaffold-disjoint split failed to contain both activity classes in all pools, a stratified random fallback split was available, but the reported DRD2 split was scaffold-disjoint. The training reward model was a scikit-learn \cite{ref-sklearn} RandomForestClassifier with 400 trees, balanced-subsample class weights, random seed 17, all CPU cores, and minimum leaf size 1. The validation model was an RBF-kernel SVC with $C=3.0$, $\gamma=\mathrm{scale}$, probability calibration enabled, balanced class weights, and random seed 17. The held-out test set contained 120 molecules. The RF and SVM were evaluated by AUROC, average precision, Pearson and Spearman correlation, mean absolute prediction difference, and top-fraction overlap.
+
+\subsection{Docking calibration}\label{subsec:docking_methods}
+
+Docking used AutoDock Vina \cite{ref-vina}. The validation reward direction was defined as $-\mathrm{Vina}$ score, because lower Vina energies are better. Co-crystal ligand redocking was performed before active-vs-negative calibration. The practical redocking gate was 2~\AA{} pose RMSD. Vina was run with one output pose, fixed per-ligand seeds, and exhaustiveness 8 for the calibration runs unless otherwise stated. Ligands were embedded with RDKit, optimized with UFF when possible, converted to PDBQT with Open Babel Gasteiger charges \cite{ref-openbabel}, and docked into the locked receptor grid. Active-vs-negative calibration used AUROC and one-sided permutation tests. For the final 7DFP calibration, actives were filtered toward antagonist-like chemistry and matched to low-activity negatives to reduce analogue and physicochemical-property bias; DUD-E-style decoy design principles motivated this matching step \cite{ref-dude}.
+
+\subsection{Activity/SA scoring}\label{subsec:sa_methods}
+
+In the activity/SA setting, training activity used the RF reward model. Training synthetic accessibility used a cheap RDKit property proxy rather than the exact fragment-based score. The proxy combined heavy atom count, rotatable bonds, rings, spiro atoms, bridgehead atoms, stereocenters, and macrocycles into a complexity value $q$, then mapped it through
+\begin{equation}
+s_{\mathrm{proxy}} = \left(1+\exp(1.35(q-2.10))\right)^{-1}.
+\label{eq:sa_proxy}
+\end{equation}
+Validation activity used the independent SVM model, while validation synthetic accessibility used the exact RDKit Contrib implementation of the Ertl--Schuffenhauer synthetic-accessibility score \cite{ref-sa}. Raw SA scores, where 1 is easy and 10 is hard, were converted to a reward by
+\begin{equation}
+s_{\mathrm{SA}} = \mathrm{clip}_{[0,1]}\left(\frac{10-\mathrm{SA}_{\mathrm{raw}}}{9}\right).
+\label{eq:sa_exact}
+\end{equation}
+The primary joint validation metric was the geometric mean in Eq.~\ref{eq:joint_metric}.
+
+\subsection{Uncertainty, positive controls, and power analysis}\label{subsec:statistics}
+
+Bootstrap confidence intervals were computed over paired repeats, not over generated molecules. This avoids pseudoreplication because molecules within the same run are not independent experimental units. We used 100,000 paired-bootstrap resamples for the reported mean-delta confidence intervals. Sign tests counted the number of positive paired deltas. Positive-control sensitivity used synthetic validation streams and 1000 shuffled controls. In the ladder, Target A began at 0.95 and was decreased by a fixed event drop after selected windows; Target B was $0.50+0.003\sin(t)$. Power analysis used 50,000 Monte Carlo paired $t$ tests under normal paired deltas, with the observed repeat-level standard deviation as the noise scale. Both two-sided $\alpha=0.05$ and one-sided positive $\alpha=0.05$ power values were reported.
+
+\subsection{Hindsight upper-bound analysis}\label{subsec:hindsight_methods}
+
+For each logged run, validation metrics were grouped into fixed windows matching the validation cadence: 20-step windows for DRD2/QED/molecular-weight and 15-step windows for activity/SA. The hindsight oracle selected the best observed run at each window, either from all runs, real-validation runs only, or random-control runs only. Static equal-weight runs supplied the baseline window means. The output is an observed-data upper bound and does not model molecules that would have been generated under unobserved weight schedules.
+
+\section{Discussion}\label{sec:discussion}
+
+The key result is not that validation-driven dynamic weighting is impossible. It is that, under the tested DRD2 settings and oracle quality, the current controllers did not produce a reliable validation-specific advantage. The expanded DRD2/QED/molecular-weight experiment was centered near zero after ten paired repeats, and the stronger-conflict activity/SA setting was also centered near zero. The initial five-repeat DRD2 direction therefore illustrates the risk of over-interpreting small-sample directionality in stochastic molecular RL experiments. In both settings, random-validation controls were essential; without them, weak improvements or noisy endpoint differences could have been misread as evidence that the controller learned from validation feedback.
+
+The diagnostic results suggest that signal quality is a major ceiling. The QSAR fallback preserved model-level separation, but RF and SVM were still correlated. On the docking calibration subset, QSAR and Vina were weakly aligned, and the Vina calibration itself was directionally non-random but below the practical AUROC gate. These facts make it difficult for a controller to learn a robust validation-driven policy: the validation signal is independent enough to be different, but not reliable enough to anchor a strong biological claim.
+
+The positive-control ladder is also instructive. The pipeline detects a strong coherent synthetic validation-weight relationship, so the negative molecular results cannot be dismissed as a completely insensitive analysis. However, medium or near-noise synthetic signals were not reliably detected under the deterministic rule. This matches the molecular results: the ten-repeat DRD2/QED/molecular-weight analysis had little power for effects around 0.005, but substantially higher power for effects around 0.015. The resulting conclusion is therefore bounded rather than absolute: we cannot exclude arbitrarily small validation-driven effects, but we did not observe a practical-scale gain.
+
+These observations argue for stronger evidentiary standards in future validation-driven controller studies. Any claim that a dynamic controller uses validation feedback should include a random-validation control, a no-signal control, and a positive-control sensitivity check. Otherwise, a controller may appear adaptive while responding primarily to noise, initialization bias, or action-space drift.
+
+\section{Limitations}\label{sec:limitations}
+
+This study has several limitations. First, the main experiments focus on DRD2 and two objective settings. GSK3B and JNK3 were not expanded because the DRD2 diagnostics did not justify the computational cost. Second, although the primary DRD2/QED/molecular-weight setting was extended to ten paired repeats, the activity/SA fast-gate setting remained at five paired repeats. Very small effects may still require larger repeat budgets, but the ten-repeat DRD2 extension argues against a stable effect at a practical scale. Third, the hyperparameter robustness grid was intentionally exploratory, with two paired repeats per configuration. Some settings had positive two-repeat means, but the repeat-level standard deviation in the expanded base setting was 0.0141, so this grid is not adequately powered for confirmatory hyperparameter selection. Fourth, the QSAR fallback is not a true independent biological oracle. It is an independent-model proxy, and the current local inventory did not contain an obvious independent ExCAPE source file for a fully separate data-source analysis. Fifth, the docking branch was not abandoned because docking lacks value; it was paused because the current DRD2\_7DFP calibration was insufficient for reliable controller feedback. Finally, the controller mechanisms tested here are simple. A contextual bandit or model-based controller could be revisited if stronger validation oracles and larger repeat budgets are available.
+
+\section{Conclusion}\label{sec:conclusion}
+
+We present a validation-disentangled diagnostic framework for auditing dynamic reward weighting in molecular RL. The framework separates training reward from controller validation feedback and tests whether real validation feedback outperforms random-validation controls. Across DRD2/QED/molecular-weight and DRD2 activity/synthetic-accessibility settings, the current controllers did not show a reliable or practically useful validation-specific advantage. Strong synthetic positive controls confirm that the audit can detect large coherent effects, but molecular effects observed here are small, noisy, and not validation-specific. These diagnostics provide a practical reporting standard for future adaptive reward-weighting studies, particularly when validation signals are noisy, expensive, or only partially independent of the training reward. The results therefore support a cautious negative conclusion while preserving a reusable framework for future validation-driven molecular generation studies.
+
+\backmatter
+
+\bmhead{Supplementary information}
+
+Supplementary information should include the controller history files, positive-control ladder output, paired-bootstrap and power-analysis output, the exploratory hyperparameter scan, RF/SVM/Vina triangulation table and scatter plots, Vina redocking/calibration details, and command logs sufficient to reproduce the diagnostics. The processed diagnostic artifacts and reproducibility scripts will be released through a public GitHub repository and archived on Zenodo upon publication.
+
+\bmhead{Acknowledgements}
+
+Acknowledgements, compute-resource statements, and collaborator acknowledgements will be completed before submission.
+
+\section*{Declarations}
+
+\bmhead{Funding}
+Funding information will be completed before submission, or the manuscript will state that no specific funding was received.
+
+\bmhead{Conflict of interest/Competing interests}
+The authors declare no competing interests. This statement will be confirmed before submission.
+
+\bmhead{Ethics approval and consent to participate}
+Not applicable.
+
+\bmhead{Consent for publication}
+Not applicable.
+
+\bmhead{Data availability}
+Processed diagnostic outputs, aggregate result tables, and non-sensitive configuration files will be made available through GitHub and Zenodo upon publication. Raw credential-bearing machine logs and server-specific paths will not be distributed.
+
+\bmhead{Code availability}
+The controller wrapper and analysis scripts will be made available through GitHub and Zenodo upon publication. The implementation avoids modification of REINVENT4 core source files and uses wrapper/monkeypatch and plugin-style mechanisms. Credential-bearing remote execution helpers will be sanitized before release.
+
+\bmhead{Author contribution}
+Author contributions will be completed before submission.
+
+\begin{appendices}
+
+\section{Diagnostic artifact map}\label{app:artifacts}
+
+\begin{table}[h]
+\caption{Key project artifacts supporting the manuscript draft.}\label{tab:artifacts}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Artifact & Purpose\\
+\midrule
+\texttt{03\_dynamic\_weight\_controller.py} & REINVENT4 wrapper and controller implementation\\
+\texttt{09\_drd2\_qsar\_pilot\_report.md} & Main experimental report\\
+\texttt{06\_drd2\_vina\_self\_check\_report.md} & Docking self-check report\\
+\texttt{positive\_control\_sensitivity\_ladder.json} & Positive-control sensitivity ladder\\
+\texttt{controller\_effect\_statistics.json} & Paired bootstrap and power analysis\\
+\texttt{drd2\_base\_n10\_interim\_pair\_summary.json} & Ten-repeat DRD2/QED/MW paired summary\\
+\texttt{17\_drd2\_n10\_interim\_report.md} & Narrative report for the ten-repeat DRD2/QED/MW extension\\
+\texttt{16\_drd2\_hyperparam\_grid\_plan.md} & One-factor hyperparameter robustness grid plan\\
+\texttt{drd2\_hyperparam\_grid\_pair\_summary\_parallel.json} & Exploratory two-repeat hyperparameter scan summary\\
+\texttt{hindsight\_activity\_sa\_fastgate\_5repeat.json} & Activity/SA hindsight upper bound\\
+\texttt{hindsight\_drd2\_qed\_mw\_multigpu.json} & DRD2/QED/MW hindsight upper bound\\
+\texttt{qsar\_vina\_triangulation\_DRD2\_7DFP.json} & RF/SVM/Vina signal triangulation\\
+\botrule
+\end{tabular}
+\end{table}
+
+\section{Exploratory hyperparameter scan}\label{app:hyperparam}
+
+We ran a small one-factor hyperparameter scan for the DRD2/QED/molecular-weight setting using two paired repeats per configuration. The trained RF reward model and SVM validation model were fixed; only the controller deadband $\epsilon$, action step $\alpha$, validation batch size, or validation cadence was changed. Because each configuration used only two paired repeats, and because the expanded base setting had repeat-level standard deviation 0.0141, this scan is exploratory and should not be interpreted as confirmatory evidence that any setting improves controller efficacy.
+
+\begin{table}[h]
+\caption{Exploratory hyperparameter scan for DRD2/QED/MW.}\label{tab:hyperparam_scan}
+\centering
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Configuration & Changed factor & Mean $\Delta$ & Direction\\
+\midrule
+$\epsilon=0.01$ & Deadband & +0.0035 & 2/2 positive\\
+$\epsilon=0.04$ & Deadband & -0.0114 & 0/2 positive\\
+$\alpha=0.05$ & Action step & +0.0012 & 1/2 positive\\
+$\alpha=0.25$ & Action step & +0.0210 & 2/2 positive\\
+Validation batch 32 & Validation batch size & -0.0096 & 0/2 positive\\
+Validation batch 128 & Validation batch size & +0.0103 & 2/2 positive\\
+Cadence 10 & Validation cadence & +0.0232 & 2/2 positive\\
+Cadence 30 & Validation cadence & +0.0005 & 1/2 positive\\
+\botrule
+\end{tabular}
+
+\vspace{2pt}
+\raggedright
+\footnotesize
+Note: $\Delta$ is the last-50-step independent validation activity for real-validation control minus random-validation control. These two-repeat estimates are hypothesis-generating only.
+\end{table}
+
+\end{appendices}
+
+\begin{thebibliography}{99}
+
+\bibitem{ref-segler-rnn}
+Segler MHS, Kogej T, Tyrchan C, Waller MP.
+Generating focused molecule libraries for drug discovery with recurrent neural networks.
+\textit{ACS Central Science}. 2018;4:120--131.
+
+\bibitem{ref-gomez-vae}
+Gomez-Bombarelli R, Wei JN, Duvenaud D, Hernandez-Lobato JM, Sanchez-Lengeling B, Sheberla D, et al.
+Automatic chemical design using a data-driven continuous representation of molecules.
+\textit{ACS Central Science}. 2018;4:268--276.
+
+\bibitem{ref-popova-release}
+Popova M, Isayev O, Tropsha A.
+Deep reinforcement learning for de novo drug design.
+\textit{Science Advances}. 2018;4:eaap7885.
+
+\bibitem{ref-jtvae}
+Jin W, Barzilay R, Jaakkola T.
+Junction tree variational autoencoder for molecular graph generation.
+In: \textit{Proceedings of the 35th International Conference on Machine Learning}. PMLR; 2018. p. 2323--2332.
+
+\bibitem{ref-gcpn}
+You J, Liu B, Ying Z, Pande V, Leskovec J.
+Graph convolutional policy network for goal-directed molecular graph generation.
+In: \textit{Advances in Neural Information Processing Systems}. 2018;31.
+
+\bibitem{ref-moldqn}
+Zhou Z, Kearnes S, Li L, Zare RN, Riley P.
+Optimization of molecules via deep reinforcement learning.
+\textit{Scientific Reports}. 2019;9:10752.
+
+\bibitem{ref-graphga}
+Jensen JH.
+A graph-based genetic algorithm and generative model/Monte Carlo tree search for the exploration of chemical space.
+\textit{Chemical Science}. 2019;10:3567--3572.
+
+\bibitem{ref-reinvent}
+Olivecrona M, Blaschke T, Engkvist O, Chen H.
+Molecular de-novo design through deep reinforcement learning.
+\textit{Journal of Cheminformatics}. 2017;9:48.
+
+\bibitem{ref-guacamol}
+Brown N, Fiscato M, Segler MHS, Vaucher AC.
+GuacaMol: benchmarking models for de novo molecular design.
+\textit{Journal of Chemical Information and Modeling}. 2019;59:1096--1108.
+
+\bibitem{ref-moses}
+Polykovskiy D, Zhebrak A, Sanchez-Lengeling B, Golovanov S, Tatanov O, Belyaev S, et al.
+Molecular Sets (MOSES): a benchmarking platform for molecular generation models.
+\textit{Frontiers in Pharmacology}. 2020;11:565644.
+
+\bibitem{ref-tdc}
+Huang K, Fu T, Gao W, Zhao Y, Roohani Y, Leskovec J, et al.
+Therapeutics Data Commons: machine learning datasets and tasks for drug discovery and development.
+In: \textit{Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks}. 2021.
+
+\bibitem{ref-pmo}
+Gao W, Fu T, Sun J, Coley CW.
+Sample efficiency matters: a benchmark for practical molecular optimization.
+In: \textit{Advances in Neural Information Processing Systems}. 2022;35.
+
+\bibitem{ref-fromer-coley}
+Fromer JC, Coley CW.
+Computer-aided multi-objective optimization in small molecule discovery.
+\textit{arXiv preprint arXiv:2210.07209}. 2022.
+
+\bibitem{ref-miettinen}
+Miettinen K.
+\textit{Nonlinear Multiobjective Optimization}.
+Boston: Springer; 1999.
+
+\bibitem{ref-deb-nsga2}
+Deb K, Pratap A, Agarwal S, Meyarivan T.
+A fast and elitist multiobjective genetic algorithm: NSGA-II.
+\textit{IEEE Transactions on Evolutionary Computation}. 2002;6:182--197.
+
+\bibitem{ref-vina}
+Trott O, Olson AJ.
+AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading.
+\textit{Journal of Computational Chemistry}. 2010;31:455--461.
+
+\bibitem{ref-chembl}
+Bento AP, Gaulton A, Hersey A, Bellis LJ, Chambers J, Davies M, et al.
+The ChEMBL bioactivity database: an update.
+\textit{Nucleic Acids Research}. 2014;42:D1083--D1090.
+
+\bibitem{ref-excape}
+Sun J, Jeliazkova N, Chupakhin V, Golib-Dzib JF, Engkvist O, Carlsson L, et al.
+ExCAPE-DB: an integrated large scale dataset facilitating Big Data analysis in chemogenomics.
+\textit{Journal of Cheminformatics}. 2017;9:17.
+
+\bibitem{ref-morgan}
+Rogers D, Hahn M.
+Extended-connectivity fingerprints.
+\textit{Journal of Chemical Information and Modeling}. 2010;50:742--754.
+
+\bibitem{ref-qed}
+Bickerton GR, Paolini GV, Besnard J, Muresan S, Hopkins AL.
+Quantifying the chemical beauty of drugs.
+\textit{Nature Chemistry}. 2012;4:90--98.
+
+\bibitem{ref-sa}
+Ertl P, Schuffenhauer A.
+Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment contributions.
+\textit{Journal of Cheminformatics}. 2009;1:8.
+
+\bibitem{ref-dude}
+Mysinger MM, Carchia M, Irwin JJ, Shoichet BK.
+Directory of Useful Decoys, Enhanced (DUD-E): better ligands and decoys for better benchmarking.
+\textit{Journal of Medicinal Chemistry}. 2012;55:6582--6594.
+
+\bibitem{ref-drd2-structure}
+Wang S, Che T, Levit A, Shoichet BK, Wacker D, Roth BL.
+Structure of the D2 dopamine receptor bound to the atypical antipsychotic drug risperidone.
+\textit{Nature}. 2018;555:269--273.
+
+\bibitem{ref-sklearn}
+Pedregosa F, Varoquaux G, Gramfort A, Michel V, Thirion B, Grisel O, et al.
+Scikit-learn: machine learning in Python.
+\textit{Journal of Machine Learning Research}. 2011;12:2825--2830.
+
+\bibitem{ref-rdkit}
+RDKit: Open-source cheminformatics software.
+\url{https://www.rdkit.org/}. Access date to be added before submission.
+
+\bibitem{ref-murcko}
+Bemis GW, Murcko MA.
+The properties of known drugs. 1. Molecular frameworks.
+\textit{Journal of Medicinal Chemistry}. 1996;39:2887--2893.
+
+\bibitem{ref-openbabel}
+O'Boyle NM, Banck M, James CA, Morley C, Vandermeersch T, Hutchison GR.
+Open Babel: An open chemical toolbox.
+\textit{Journal of Cheminformatics}. 2011;3:33.
+
+\bibitem{ref-gao-synth}
+Gao W, Coley CW.
+The synthesizability of molecules proposed by generative models.
+\textit{arXiv preprint arXiv:2002.07007}. 2020.
+
+\bibitem{ref-bootstrap}
+Efron B.
+Bootstrap methods: another look at the jackknife.
+\textit{The Annals of Statistics}. 1979;7:1--26.
+
+\bibitem{ref-adaptive-control}
+Astrom KJ, Wittenmark B.
+\textit{Adaptive Control}.
+2nd ed. Addison-Wesley; 1995.
+
+\bibitem{ref-roijers-survey}
+Roijers DM, Vamplew P, Whiteson S, Dazeley R.
+A survey of multi-objective sequential decision-making.
+\textit{Journal of Artificial Intelligence Research}. 2013;48:67--113.
+
+\bibitem{ref-mossalam-modrl}
+Mossalam H, Assael YM, Roijers DM, Whiteson S.
+Multi-objective deep reinforcement learning.
+\textit{arXiv preprint arXiv:1610.02707}. 2016.
+
+\bibitem{ref-abels-dynamic}
+Abels A, Roijers DM, Lenaerts T, Nowe A, Steckelmacher D.
+Dynamic weights in multi-objective deep reinforcement learning.
+In: \textit{Proceedings of the 36th International Conference on Machine Learning}. PMLR; 2019. p. 11--20.
+
+\bibitem{ref-kendall-uncertainty}
+Kendall A, Gal Y, Cipolla R.
+Multi-task learning using uncertainty to weigh losses for scene geometry and semantics.
+In: \textit{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition}. 2018. p. 7482--7491.
+
+\bibitem{ref-gradnorm}
+Chen Z, Badrinarayanan V, Lee CY, Rabinovich A.
+GradNorm: gradient normalization for adaptive loss balancing in deep multitask networks.
+In: \textit{Proceedings of the 35th International Conference on Machine Learning}. PMLR; 2018. p. 794--803.
+
+\bibitem{ref-autolambda}
+Liu S, James S, Davison AJ, Johns E.
+Auto-Lambda: disentangling dynamic task relationships.
+\textit{arXiv preprint arXiv:2202.03091}. 2022.
+
+\bibitem{ref-maclaurin-hyperopt}
+Maclaurin D, Duvenaud D, Adams R.
+Gradient-based hyperparameter optimization through reversible learning.
+In: \textit{Proceedings of the 32nd International Conference on Machine Learning}. PMLR; 2015. p. 2113--2122.
+
+\bibitem{ref-franceschi-bilevel}
+Franceschi L, Frasconi P, Salzo S, Grazzi R, Pontil M.
+Bilevel programming for hyperparameter optimization and meta-learning.
+In: \textit{Proceedings of the 35th International Conference on Machine Learning}. PMLR; 2018. p. 1568--1577.
+
+\bibitem{ref-dror-significance}
+Dror R, Baumer G, Shlomov S, Reichart R.
+The hitchhiker's guide to testing statistical significance in natural language processing.
+In: \textit{Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics}. 2018. p. 1383--1392.
+
+\bibitem{min2024dynaopt}
+Min DJ, Perez-Rosas V, Resnicow K, Mihalcea R.
+Dynamic reward adjustment in multi-reward reinforcement learning for counselor
+reflection generation.
+In: Proceedings of the 2024 Joint International Conference on Computational
+Linguistics, Language Resources and Evaluation (LREC-COLING 2024).
+Torino, Italia: ELRA and ICCL; 2024. p. 5437--5449.
+
+\bibitem{handa2023difficulty}
+Handa K, Thomas MC, Kageyama M, Iijima T, Bender A.
+On the difficulty of validating molecular generative models realistically:
+a case study on public and proprietary data.
+Journal of Cheminformatics. 2023;15:112.
+doi:10.1186/s13321-023-00781-1.
+
+\bibitem{lu2026dynamicreward}
+Y. Lu, Z. Wang, S. Li, X. Liu, C. Yu, Q. Yin, Z. Shi, Z. Zhang, M. Jiang,
+Learning to optimize multi-objective alignment through dynamic reward weighting,
+Transactions of the Association for Computational Linguistics 14 (2026) 1051--1073.
+
+\bibitem{zhang2026validationner}
+C. Zhang, W. Liao,
+A validation-driven training controller for cross-lingual biomedical NER via reinforcement learning-based adaptive loss weighting,
+Journal of Biomedical Informatics 180 (2026) 105073.
+doi:10.1016/j.jbi.2026.105073.
+
+\end{thebibliography}
+
+\end{document}
