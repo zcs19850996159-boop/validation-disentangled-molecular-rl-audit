@@ -12,6 +12,7 @@ The project audits whether an adaptive reward-weight controller in REINVENT4 res
 - `results/` - lightweight aggregate result files used in the manuscript.
 - `figures/` - editable SVG and PDF manuscript figures.
 - `docs/` - experiment plans and diagnostic reports.
+- `docs/dynaopt_audit/` - planned DynaOpt reproduction/audit instructions using shuffled-feedback controls.
 - `manuscript/` - current LaTeX draft.
 
 Server-specific remote execution helpers, raw checkpoints, dependency caches, and raw large generation logs are intentionally excluded.
@@ -67,6 +68,10 @@ python scripts/make_manuscript_figures.py
 ```
 
 The exact REINVENT4 training runs require trained QSAR models and the corresponding REINVENT4 prior/model files. Large generated molecule CSVs and checkpoints are not included in this lightweight GitHub package; the aggregate outputs needed to reproduce manuscript-level tables and figures are included under `results/`.
+
+## DynaOpt Audit Notes
+
+The `docs/dynaopt_audit/` directory contains planning material for auditing MichiganNLP/DynaOpt. Because DynaOpt updates its Exp3 bandit from training rewards rather than from an independent validation signal, its control should be called a random-feedback or shuffled-feedback control, not a random-validation control. The proposed intervention only shuffles the reward passed into `Exp3.__call__(reward, choice)` for bandit weight updates; it must not change the generator training reward, loss, or text-generation path.
 
 ## Safety and Scope
 
