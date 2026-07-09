@@ -1,0 +1,11 @@
+{
+  "target": "GSK3B",
+  "target_chembl_id": "CHEMBL262",
+  "description": "Glycogen synthase kinase-3 beta, Homo sapiens",
+  "n_actives": 512,
+  "n_negatives": 339,
+  "active_threshold": 7.0,
+  "negative_threshold": 5.0,
+  "assay_types": "B",
+  "standard_types": "EC50,IC50,KD,KI"
+}

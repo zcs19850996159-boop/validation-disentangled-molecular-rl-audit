@@ -1,8 +1,8 @@
-# Validation-Disentangled Reward Weighting
+# Validation-Disentangled Molecular RL Audit
 
 Reproducibility package for a validation-disentangled diagnostic framework for adaptive reward weighting in molecular generation.
 
-The project audits whether an adaptive reward-weight controller in REINVENT4 responds to an independent validation signal, rather than to the same scores used to train the molecular generator. The repository contains the controller wrapper, local analysis scripts, configuration files, aggregate results, and manuscript figures used for the diagnostic study.
+The project audits whether an adaptive reward-weight controller in REINVENT4 responds to an independent validation signal, rather than to the same scores used to train the molecular generator. The contribution is a reporting and diagnostic standard for validation-driven molecular RL controllers, not a claim that the tested controller improves molecular generation. The repository contains the controller wrapper, local analysis scripts, configuration files, aggregate results, manuscript figures, and the current LaTeX draft used for the diagnostic study.
 
 ## Repository Contents
 
@@ -28,6 +28,15 @@ The included aggregate results support the diagnostic conclusion that the tested
 - DRD2 activity/SA fast-gate result:
   - mean delta: `-0.0007`
   - 95% paired-bootstrap CI: `[-0.0038, +0.0022]`
+- GSK3B activity/SA portability smoke test:
+  - newly trained GSK3B RF/SVM QSAR pair
+  - SVM validation AUROC: `0.924`
+  - mean real-vs-random delta: `+0.0026`
+  - positive repeats: `1/3`
+  - real-vs-static delta: `-0.0009`
+- Static utility and molecule-quality checks:
+  - static equal-weight baselines were expanded to five repeats for DRD2 settings.
+  - generated-molecule sanity checks include validity, uniqueness, target-set novelty, diversity, QED, SA, molecular weight, PAINS/Brenk alerts, physicochemical distributions, scaffold enrichment, and nearest-neighbor similarity to target actives.
 - Hyperparameter scan:
   - included as exploratory only, with two paired repeats per setting.
 
@@ -65,6 +74,7 @@ python scripts/positive_control_sensitivity_ladder.py
 python scripts/qsar_signal_independence.py
 python scripts/qsar_vina_triangulation.py
 python scripts/make_manuscript_figures.py
+python scripts/manuscript_additional_tables.py --root . --output-prefix manuscript --quality
 ```
 
 The exact REINVENT4 training runs require trained QSAR models and the corresponding REINVENT4 prior/model files. Large generated molecule CSVs and checkpoints are not included in this lightweight GitHub package; the aggregate outputs needed to reproduce manuscript-level tables and figures are included under `results/`.

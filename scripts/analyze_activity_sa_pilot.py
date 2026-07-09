@@ -85,7 +85,7 @@ def validation_sa(smiles: str) -> tuple[float | None, float | None]:
     return reward, raw
 
 
-def read_run(path: Path, payload: dict) -> list[dict]:
+def read_run(path: Path, payload: dict, activity_component: str = "DRD2_activity") -> list[dict]:
     rows = []
     with path.open(newline="") as f:
         for row in csv.DictReader(f):
@@ -103,7 +103,7 @@ def read_run(path: Path, payload: dict) -> list[dict]:
                     "scaffold": scaffold(smiles),
                     "step": int(float(row.get("step") or 0)),
                     "training_score": to_float(row.get("Score")),
-                    "training_activity": to_float(row.get("DRD2_activity (raw)") or row.get("DRD2_activity")),
+                    "training_activity": to_float(row.get(f"{activity_component} (raw)") or row.get(activity_component)),
                     "training_sa": to_float(row.get("SA_score (raw)") or row.get("SA_score")),
                     "validation_activity": activity,
                     "validation_sa": sa_reward,
@@ -163,15 +163,17 @@ def parse_run_arg(raw: str) -> tuple[str, Path]:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", required=True)
+    parser.add_argument("--activity-component", default=None)
     parser.add_argument("--run", action="append", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
     payload = load_model(Path(args.model))
+    activity_component = args.activity_component or str(payload.get("component_name", "DRD2_activity"))
     result = {}
     for raw in args.run:
         name, path = parse_run_arg(raw)
-        result[name] = summarize(read_run(path, payload))
+        result[name] = summarize(read_run(path, payload, activity_component=activity_component))
 
     Path(args.output).write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
     print(json.dumps(result, indent=2, sort_keys=True))

@@ -1,0 +1,1930 @@
+{
+  "active_reference_size": 256,
+  "reference_size": 479,
+  "settings": {
+    "DRD2 activity/SA": {
+      "random": {
+        "aggregate": {
+          "brenk_fraction": {
+            "mean": 0.39467572056616673,
+            "sd": 0.008852738067998304
+          },
+          "internal_diversity_sampled": {
+            "mean": 0.8890511930781663,
+            "sd": 0.0007768468357895497
+          },
+          "logged_validity": {
+            "mean": 0.9834375,
+            "sd": 0.0022597805364496424
+          },
+          "mean_hba": {
+            "mean": 4.381054249040735,
+            "sd": 0.23539306540144278
+          },
+          "mean_hbd": {
+            "mean": 1.469306372405183,
+            "sd": 0.058058558373715256
+          },
+          "mean_logp": {
+            "mean": 3.390630438701573,
+            "sd": 0.12064314996477472
+          },
+          "mean_mw": {
+            "mean": 380.3655971300224,
+            "sd": 5.246620219810387
+          },
+          "mean_nn_similarity_to_active_reference": {
+            "mean": 0.21705839669127625,
+            "sd": 0.0026148077208442426
+          },
+          "mean_qed": {
+            "mean": 0.5822126342876032,
+            "sd": 0.009335482832135084
+          },
+          "mean_ring_count": {
+            "mean": 3.363011372969257,
+            "sd": 0.07020410177054545
+          },
+          "mean_rotatable_bonds": {
+            "mean": 5.1074589261084995,
+            "sd": 0.19723396715881175
+          },
+          "mean_sa_raw": {
+            "mean": 2.9045751256385044,
+            "sd": 0.049234667150369074
+          },
+          "mean_tpsa": {
+            "mean": 75.73292955028313,
+            "sd": 3.7511961627078443
+          },
+          "n_runs": 5,
+          "n_total_rows": 19200,
+          "novelty_vs_reference": {
+            "mean": 0.9999471039407564,
+            "sd": 0.00011827918421052354
+          },
+          "pains_fraction": {
+            "mean": 0.06418729044579369,
+            "sd": 0.006804215191120699
+          },
+          "rdkit_validity": {
+            "mean": 0.9834375,
+            "sd": 0.0022597805364496424
+          },
+          "scaffold_diversity": {
+            "mean": 0.9085891973130034,
+            "sd": 0.006671223340072426
+          },
+          "structural_alert_fraction": {
+            "mean": 0.4198292687069387,
+            "sd": 0.007511105054078917
+          },
+          "top100_diversity": {
+            "mean": 0.8747946765192326,
+            "sd": 0.005901902258940639
+          },
+          "top100_nn_similarity_to_active_reference": {
+            "mean": 0.2770388602632675,
+            "sd": 0.018857174861746057
+          },
+          "top10_scaffold_coverage": {
+            "mean": 0.04358518364902432,
+            "sd": 0.0022265248671214668
+          },
+          "top_scaffold_fraction": {
+            "mean": 0.02462558772465303,
+            "sd": 0.0017148251326591485
+          },
+          "uniqueness": {
+            "mean": 0.9999471458773784,
+            "sd": 0.00011818541107294132
+          }
+        },
+        "per_run": [
+          {
+            "brenk_fraction": 0.39656084656084656,
+            "file": "drd2_activity_sa_fast_random_deterministic_seed17_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8887146017162915,
+            "logged_validity": 0.984375,
+            "mean_hba": 4.542857142857143,
+            "mean_hbd": 1.555026455026455,
+            "mean_logp": 3.3157629338624357,
+            "mean_mw": 381.8506753968255,
+            "mean_nn_similarity_to_active_reference": 0.2132249141772541,
+            "mean_qed": 0.5782522730821643,
+            "mean_ring_count": 3.265079365079365,
+            "mean_rotatable_bonds": 5.251587301587302,
+            "mean_sa_raw": 2.9361396529719808,
+            "mean_tpsa": 78.88497354497355,
+            "n_unique": 3780,
+            "n_unique_scaffolds": 3402,
+            "n_valid": 3780,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.05634920634920635,
+            "rdkit_validity": 0.984375,
+            "run": "random_deterministic_sa_fast_seed17",
+            "scaffold_diversity": 0.9,
+            "structural_alert_fraction": 0.4166666666666667,
+            "top100_diversity": 0.872873209062183,
+            "top100_nn_similarity_to_active_reference": 0.265016579733486,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04497354497354497,
+            "top_scaffold_fraction": 0.02486772486772487,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          },
+          {
+            "brenk_fraction": 0.38481883099709074,
+            "file": "drd2_activity_sa_fast_random_deterministic_seed23_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8887376427253142,
+            "logged_validity": 0.9846354166666667,
+            "mean_hba": 4.455435070087279,
+            "mean_hbd": 1.4699814863792648,
+            "mean_logp": 3.453529672044435,
+            "mean_mw": 386.04187304945793,
+            "mean_nn_similarity_to_active_reference": 0.21660863441302702,
+            "mean_qed": 0.5723305924599928,
+            "mean_ring_count": 3.3903729172176673,
+            "mean_rotatable_bonds": 5.315524993387992,
+            "mean_sa_raw": 2.923922347114039,
+            "mean_tpsa": 76.33113462047078,
+            "n_unique": 3781,
+            "n_unique_scaffolds": 3468,
+            "n_valid": 3781,
+            "novelty_vs_reference": 0.999735519703782,
+            "pains_fraction": 0.06585559375826501,
+            "rdkit_validity": 0.9846354166666667,
+            "run": "random_deterministic_sa_fast_seed23",
+            "scaffold_diversity": 0.9172176672837874,
+            "structural_alert_fraction": 0.41232478180375565,
+            "top100_diversity": 0.8811921179277241,
+            "top100_nn_similarity_to_active_reference": 0.274756410312212,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04390372917217667,
+            "top_scaffold_fraction": 0.02697699021422904,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          },
+          {
+            "brenk_fraction": 0.4085592769803296,
+            "file": "drd2_activity_sa_fast_random_deterministic_seed101_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8901430918253583,
+            "logged_validity": 0.9796875,
+            "mean_hba": 4.638755980861244,
+            "mean_hbd": 1.460127591706539,
+            "mean_logp": 3.214981451355664,
+            "mean_mw": 383.3667161084531,
+            "mean_nn_similarity_to_active_reference": 0.2165162017129349,
+            "mean_qed": 0.5782445160627459,
+            "mean_ring_count": 3.453216374269006,
+            "mean_rotatable_bonds": 4.93912812333865,
+            "mean_sa_raw": 2.9581066463073977,
+            "mean_tpsa": 79.42643274853802,
+            "n_unique": 3762,
+            "n_unique_scaffolds": 3433,
+            "n_valid": 3762,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.06698564593301436,
+            "rdkit_validity": 0.9796875,
+            "run": "random_deterministic_sa_fast_seed101",
+            "scaffold_diversity": 0.9125465178096757,
+            "structural_alert_fraction": 0.43221690590111644,
+            "top100_diversity": 0.8809616867353737,
+            "top100_nn_similarity_to_active_reference": 0.26395638136985794,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04066985645933014,
+            "top_scaffold_fraction": 0.022860180754917598,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          },
+          {
+            "brenk_fraction": 0.3928476821192053,
+            "file": "drd2_activity_sa_fast_random_deterministic_seed202_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8895057917800754,
+            "logged_validity": 0.9830729166666666,
+            "mean_hba": 4.106225165562914,
+            "mean_hbd": 1.391523178807947,
+            "mean_logp": 3.474316394701989,
+            "mean_mw": 372.54229165562924,
+            "mean_nn_similarity_to_active_reference": 0.21997836084281575,
+            "mean_qed": 0.5966366108582658,
+            "mean_ring_count": 3.3303311258278145,
+            "mean_rotatable_bonds": 5.167682119205298,
+            "mean_sa_raw": 2.85065739858484,
+            "mean_tpsa": 70.48691920529801,
+            "n_unique": 3775,
+            "n_unique_scaffolds": 3429,
+            "n_valid": 3775,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.0585430463576159,
+            "rdkit_validity": 0.9830729166666666,
+            "run": "random_deterministic_sa_fast_seed202",
+            "scaffold_diversity": 0.9083443708609271,
+            "structural_alert_fraction": 0.4174834437086093,
+            "top100_diversity": 0.8693283805489699,
+            "top100_nn_similarity_to_active_reference": 0.3097908816671477,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.042119205298013246,
+            "top_scaffold_fraction": 0.02304635761589404,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          },
+          {
+            "brenk_fraction": 0.3905919661733615,
+            "file": "drd2_activity_sa_fast_random_deterministic_seed303_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8881548373437921,
+            "logged_validity": 0.9854166666666667,
+            "mean_hba": 4.1619978858350954,
+            "mean_hbd": 1.4698731501057083,
+            "mean_logp": 3.4945617415433423,
+            "mean_mw": 378.0264294397464,
+            "mean_nn_similarity_to_active_reference": 0.21896387231034953,
+            "mean_qed": 0.5855991789748473,
+            "mean_ring_count": 3.3760570824524314,
+            "mean_rotatable_bonds": 4.863372093023256,
+            "mean_sa_raw": 2.854049583214264,
+            "mean_tpsa": 73.5351876321353,
+            "n_unique": 3783,
+            "n_unique_scaffolds": 3423,
+            "n_valid": 3784,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.0732029598308668,
+            "rdkit_validity": 0.9854166666666667,
+            "run": "random_deterministic_sa_fast_seed303",
+            "scaffold_diversity": 0.9048374306106265,
+            "structural_alert_fraction": 0.42045454545454547,
+            "top100_diversity": 0.8696179883219125,
+            "top100_nn_similarity_to_active_reference": 0.27167404823363395,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04625958234205657,
+            "top_scaffold_fraction": 0.025376685170499604,
+            "total_rows": 3840,
+            "uniqueness": 0.9997357293868921
+          }
+        ]
+      },
+      "real": {
+        "aggregate": {
+          "brenk_fraction": {
+            "mean": 0.39583004738932365,
+            "sd": 0.012080584814328062
+          },
+          "internal_diversity_sampled": {
+            "mean": 0.8890767493423067,
+            "sd": 0.0011904021608639926
+          },
+          "logged_validity": {
+            "mean": 0.9821354166666667,
+            "sd": 0.0031606044632184757
+          },
+          "mean_hba": {
+            "mean": 4.428195643120533,
+            "sd": 0.1330529014480752
+          },
+          "mean_hbd": {
+            "mean": 1.4794481238009674,
+            "sd": 0.052283956328727295
+          },
+          "mean_logp": {
+            "mean": 3.3620632921782327,
+            "sd": 0.045876924252256465
+          },
+          "mean_mw": {
+            "mean": 380.8577548622948,
+            "sd": 7.273266733487682
+          },
+          "mean_nn_similarity_to_active_reference": {
+            "mean": 0.21657767956255664,
+            "sd": 0.00215127990675996
+          },
+          "mean_qed": {
+            "mean": 0.5813919429821987,
+            "sd": 0.01244535048362979
+          },
+          "mean_ring_count": {
+            "mean": 3.347744073914105,
+            "sd": 0.046726896143313316
+          },
+          "mean_rotatable_bonds": {
+            "mean": 5.219572721721138,
+            "sd": 0.24686592217304457
+          },
+          "mean_sa_raw": {
+            "mean": 2.913151159378366,
+            "sd": 0.015008355384003079
+          },
+          "mean_tpsa": {
+            "mean": 76.3147197398364,
+            "sd": 2.5774203125417205
+          },
+          "n_runs": 5,
+          "n_total_rows": 19200,
+          "novelty_vs_reference": {
+            "mean": 0.9999469073533316,
+            "sd": 0.00011871876705600968
+          },
+          "pains_fraction": {
+            "mean": 0.062095772283899724,
+            "sd": 0.004357274691649307
+          },
+          "rdkit_validity": {
+            "mean": 0.9821354166666667,
+            "sd": 0.0031606044632184757
+          },
+          "scaffold_diversity": {
+            "mean": 0.9105824336616996,
+            "sd": 0.007439881366961981
+          },
+          "structural_alert_fraction": {
+            "mean": 0.42133889355108417,
+            "sd": 0.014171773565967143
+          },
+          "top100_diversity": {
+            "mean": 0.8743957071407367,
+            "sd": 0.0022619815253666366
+          },
+          "top100_nn_similarity_to_active_reference": {
+            "mean": 0.2762379628177023,
+            "sd": 0.008596679278091152
+          },
+          "top10_scaffold_coverage": {
+            "mean": 0.04475988247648063,
+            "sd": 0.004723369812532157
+          },
+          "top_scaffold_fraction": {
+            "mean": 0.025508015128265192,
+            "sd": 0.003934168732742416
+          },
+          "uniqueness": {
+            "mean": 0.9998410014042617,
+            "sd": 0.0001451475228905976
+          }
+        },
+        "per_run": [
+          {
+            "brenk_fraction": 0.38096500530222693,
+            "file": "drd2_activity_sa_fast_deterministic_seed17_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8906028090802647,
+            "logged_validity": 0.9822916666666667,
+            "mean_hba": 4.242311770943797,
+            "mean_hbd": 1.3947507953340403,
+            "mean_logp": 3.352045265111349,
+            "mean_mw": 371.00211717921536,
+            "mean_nn_similarity_to_active_reference": 0.21845648350067498,
+            "mean_qed": 0.5974881035828264,
+            "mean_ring_count": 3.3891834570519617,
+            "mean_rotatable_bonds": 4.839607635206787,
+            "mean_sa_raw": 2.9126996861904186,
+            "mean_tpsa": 72.14424443266172,
+            "n_unique": 3771,
+            "n_unique_scaffolds": 3434,
+            "n_valid": 3772,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.05620360551431601,
+            "rdkit_validity": 0.9822916666666667,
+            "run": "deterministic_sa_fast_seed17",
+            "scaffold_diversity": 0.9106337841421374,
+            "structural_alert_fraction": 0.4024390243902439,
+            "top100_diversity": 0.8725494268641464,
+            "top100_nn_similarity_to_active_reference": 0.27790063810495863,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04030761071333864,
+            "top_scaffold_fraction": 0.023335985149827633,
+            "total_rows": 3840,
+            "uniqueness": 0.9997348886532343
+          },
+          {
+            "brenk_fraction": 0.39039831179108414,
+            "file": "drd2_activity_sa_fast_deterministic_seed23_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8882394290639399,
+            "logged_validity": 0.9872395833333333,
+            "mean_hba": 4.45449749406489,
+            "mean_hbd": 1.4642574518596676,
+            "mean_logp": 3.33036218148246,
+            "mean_mw": 379.13282194671604,
+            "mean_nn_similarity_to_active_reference": 0.2142801232180762,
+            "mean_qed": 0.584495748991082,
+            "mean_ring_count": 3.2993932999208653,
+            "mean_rotatable_bonds": 5.211026114481667,
+            "mean_sa_raw": 2.898351908634985,
+            "mean_tpsa": 76.22562120812451,
+            "n_unique": 3790,
+            "n_unique_scaffolds": 3428,
+            "n_valid": 3791,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.06462674756001055,
+            "rdkit_validity": 0.9872395833333333,
+            "run": "deterministic_sa_fast_seed23",
+            "scaffold_diversity": 0.9044854881266491,
+            "structural_alert_fraction": 0.4159852281719863,
+            "top100_diversity": 0.8780276269981216,
+            "top100_nn_similarity_to_active_reference": 0.26979692779205133,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.050659630606860157,
+            "top_scaffold_fraction": 0.030606860158311346,
+            "total_rows": 3840,
+            "uniqueness": 0.9997362173568979
+          },
+          {
+            "brenk_fraction": 0.41279532784709316,
+            "file": "drd2_activity_sa_fast_deterministic_seed101_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8885805123231266,
+            "logged_validity": 0.9809895833333333,
+            "mean_hba": 4.5840191133528005,
+            "mean_hbd": 1.5240244226174675,
+            "mean_logp": 3.3677736527740927,
+            "mean_mw": 389.5094348287763,
+            "mean_nn_similarity_to_active_reference": 0.21913130336469283,
+            "mean_qed": 0.5677224258378003,
+            "mean_ring_count": 3.3769577913458986,
+            "mean_rotatable_bonds": 5.4948234669498275,
+            "mean_sa_raw": 2.937414593898795,
+            "mean_tpsa": 78.84704008494823,
+            "n_unique": 3767,
+            "n_unique_scaffolds": 3478,
+            "n_valid": 3767,
+            "novelty_vs_reference": 0.9997345367666578,
+            "pains_fraction": 0.06185293336872843,
+            "rdkit_validity": 0.9809895833333333,
+            "run": "deterministic_sa_fast_seed101",
+            "scaffold_diversity": 0.9232811255641094,
+            "structural_alert_fraction": 0.44013804088133796,
+            "top100_diversity": 0.8738867097329902,
+            "top100_nn_similarity_to_active_reference": 0.2892217975677297,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.039554021767985136,
+            "top_scaffold_fraction": 0.02150252190071675,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          },
+          {
+            "brenk_fraction": 0.39302820649281534,
+            "file": "drd2_activity_sa_fast_deterministic_seed202_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8900698754378169,
+            "logged_validity": 0.9786458333333333,
+            "mean_hba": 4.354976051091006,
+            "mean_hbd": 1.5045236828100053,
+            "mean_logp": 3.322480689196383,
+            "mean_mw": 378.3002676955829,
+            "mean_nn_similarity_to_active_reference": 0.2161823744672616,
+            "mean_qed": 0.5872487354792548,
+            "mean_ring_count": 3.29430548163917,
+            "mean_rotatable_bonds": 5.183608302288452,
+            "mean_sa_raw": 2.9035236448441197,
+            "mean_tpsa": 76.38234699308143,
+            "n_unique": 3757,
+            "n_unique_scaffolds": 3411,
+            "n_valid": 3758,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.0601383714741884,
+            "rdkit_validity": 0.9786458333333333,
+            "run": "deterministic_sa_fast_seed202",
+            "scaffold_diversity": 0.9079052435453819,
+            "structural_alert_fraction": 0.4191059073975519,
+            "top100_diversity": 0.8725757213398982,
+            "top100_nn_similarity_to_active_reference": 0.2770907919913712,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04711205749268033,
+            "top_scaffold_fraction": 0.028746340165025287,
+            "total_rows": 3840,
+            "uniqueness": 0.9997339010111762
+          },
+          {
+            "brenk_fraction": 0.4019633855133988,
+            "file": "drd2_activity_sa_fast_deterministic_seed303_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8878911208063858,
+            "logged_validity": 0.9815104166666667,
+            "mean_hba": 4.505173786150173,
+            "mean_hbd": 1.509684266383656,
+            "mean_logp": 3.4376546723268793,
+            "mean_mw": 386.34413266118344,
+            "mean_nn_similarity_to_active_reference": 0.21483811326207752,
+            "mean_qed": 0.5700047010200298,
+            "mean_ring_count": 3.3788803396126292,
+            "mean_rotatable_bonds": 5.36879808967896,
+            "mean_sa_raw": 2.9137659633235122,
+            "mean_tpsa": 77.97434598036615,
+            "n_unique": 3769,
+            "n_unique_scaffolds": 3417,
+            "n_valid": 3769,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.06765720350225524,
+            "rdkit_validity": 0.9815104166666667,
+            "run": "deterministic_sa_fast_seed303",
+            "scaffold_diversity": 0.9066065269302203,
+            "structural_alert_fraction": 0.4290262669143009,
+            "top100_diversity": 0.8749390507685268,
+            "top100_nn_similarity_to_active_reference": 0.26717965863240073,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04616609180153887,
+            "top_scaffold_fraction": 0.023348368267444946,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          }
+        ]
+      },
+      "static": {
+        "aggregate": {
+          "brenk_fraction": {
+            "mean": 0.3872959346556316,
+            "sd": 0.005686807281873711
+          },
+          "internal_diversity_sampled": {
+            "mean": 0.889297635260386,
+            "sd": 0.0015614482352515574
+          },
+          "logged_validity": {
+            "mean": 0.9841145833333333,
+            "sd": 0.0010894010762162554
+          },
+          "mean_hba": {
+            "mean": 4.348828776560687,
+            "sd": 0.09106303276670043
+          },
+          "mean_hbd": {
+            "mean": 1.453160578240614,
+            "sd": 0.03743580843168849
+          },
+          "mean_logp": {
+            "mean": 3.327310607903876,
+            "sd": 0.08272605992566726
+          },
+          "mean_mw": {
+            "mean": 375.94680615274837,
+            "sd": 6.286968170553535
+          },
+          "mean_nn_similarity_to_active_reference": {
+            "mean": 0.21689249608242742,
+            "sd": 0.0030466885547987673
+          },
+          "mean_qed": {
+            "mean": 0.5917428571061444,
+            "sd": 0.006777098842187774
+          },
+          "mean_ring_count": {
+            "mean": 3.2781373004166117,
+            "sd": 0.06598515012934386
+          },
+          "mean_rotatable_bonds": {
+            "mean": 5.08610559491996,
+            "sd": 0.1250974979397338
+          },
+          "mean_sa_raw": {
+            "mean": 2.913015594904202,
+            "sd": 0.038978106779081936
+          },
+          "mean_tpsa": {
+            "mean": 75.17082487334248,
+            "sd": 1.8003218076966845
+          },
+          "n_runs": 5,
+          "n_total_rows": 19200,
+          "novelty_vs_reference": {
+            "mean": 0.9998942217198348,
+            "sd": 0.0001448430462791288
+          },
+          "pains_fraction": {
+            "mean": 0.061711955697235414,
+            "sd": 0.003480333399773762
+          },
+          "rdkit_validity": {
+            "mean": 0.9841145833333333,
+            "sd": 0.0010894010762162554
+          },
+          "scaffold_diversity": {
+            "mean": 0.898904599046166,
+            "sd": 0.007854223343566403
+          },
+          "structural_alert_fraction": {
+            "mean": 0.41174888647033625,
+            "sd": 0.004770360842286745
+          },
+          "top100_diversity": {
+            "mean": 0.8778210458373987,
+            "sd": 0.004747861218678181
+          },
+          "top100_nn_similarity_to_active_reference": {
+            "mean": 0.26621731167362195,
+            "sd": 0.01156357009661807
+          },
+          "top10_scaffold_coverage": {
+            "mean": 0.049698725607662204,
+            "sd": 0.006462970199162486
+          },
+          "top_scaffold_fraction": {
+            "mean": 0.03022049733900011,
+            "sd": 0.005913179581895508
+          },
+          "uniqueness": {
+            "mean": 0.9998941378835505,
+            "sd": 0.0001449576750267548
+          }
+        },
+        "per_run": [
+          {
+            "brenk_fraction": 0.3795659078877713,
+            "file": "drd2_activity_sa_fast_static_equal_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8866747860413634,
+            "logged_validity": 0.9838541666666667,
+            "mean_hba": 4.315246161990471,
+            "mean_hbd": 1.4663843303335098,
+            "mean_logp": 3.4237442615140306,
+            "mean_mw": 380.6681349920594,
+            "mean_nn_similarity_to_active_reference": 0.22195186172147757,
+            "mean_qed": 0.5902397058050232,
+            "mean_ring_count": 3.320804658549497,
+            "mean_rotatable_bonds": 5.158020116463738,
+            "mean_sa_raw": 2.8730699766405854,
+            "mean_tpsa": 74.59557437797777,
+            "n_unique": 3777,
+            "n_unique_scaffolds": 3399,
+            "n_valid": 3778,
+            "novelty_vs_reference": 0.9997352396081546,
+            "pains_fraction": 0.06246691371095818,
+            "rdkit_validity": 0.9838541666666667,
+            "run": "static_equal_fast",
+            "scaffold_diversity": 0.8999205718824463,
+            "structural_alert_fraction": 0.40524086818422445,
+            "top100_diversity": 0.8768977168990726,
+            "top100_nn_similarity_to_active_reference": 0.27884599949487693,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.04898067249139529,
+            "top_scaffold_fraction": 0.028064601535610273,
+            "total_rows": 3840,
+            "uniqueness": 0.9997353096876654
+          },
+          {
+            "brenk_fraction": 0.38781456953642385,
+            "file": "drd2_activity_sa_fast_static_equal_rep2_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.889313706464259,
+            "logged_validity": 0.9830729166666666,
+            "mean_hba": 4.451920529801325,
+            "mean_hbd": 1.5120529801324503,
+            "mean_logp": 3.342947154966889,
+            "mean_mw": 381.9931748344372,
+            "mean_nn_similarity_to_active_reference": 0.21384665157943117,
+            "mean_qed": 0.5832012435061752,
+            "mean_ring_count": 3.2249006622516556,
+            "mean_rotatable_bonds": 5.260397350993378,
+            "mean_sa_raw": 2.9666532968072543,
+            "mean_tpsa": 77.62694304635761,
+            "n_unique": 3775,
+            "n_unique_scaffolds": 3372,
+            "n_valid": 3775,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.0656953642384106,
+            "rdkit_validity": 0.9830729166666666,
+            "run": "static_equal_fast_rep2",
+            "scaffold_diversity": 0.8932450331125827,
+            "structural_alert_fraction": 0.41509933774834434,
+            "top100_diversity": 0.8751094707591522,
+            "top100_nn_similarity_to_active_reference": 0.2787977285329897,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.050596026490066226,
+            "top_scaffold_fraction": 0.0328476821192053,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          },
+          {
+            "brenk_fraction": 0.3839025681758009,
+            "file": "drd2_activity_sa_fast_static_equal_rep3_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8907962338340879,
+            "logged_validity": 0.98359375,
+            "mean_hba": 4.216838760921366,
+            "mean_hbd": 1.4360603653693407,
+            "mean_logp": 3.337113240667198,
+            "mean_mw": 371.08406221869217,
+            "mean_nn_similarity_to_active_reference": 0.2155745761868042,
+            "mean_qed": 0.5939775121474506,
+            "mean_ring_count": 3.2880593063277734,
+            "mean_rotatable_bonds": 5.032565528196982,
+            "mean_sa_raw": 2.8803053174444058,
+            "mean_tpsa": 73.08539052157798,
+            "n_unique": 3777,
+            "n_unique_scaffolds": 3375,
+            "n_valid": 3777,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.059835848557055864,
+            "rdkit_validity": 0.98359375,
+            "run": "static_equal_fast_rep3",
+            "scaffold_diversity": 0.8935663224781573,
+            "structural_alert_fraction": 0.40879004500926663,
+            "top100_diversity": 0.8848672429179941,
+            "top100_nn_similarity_to_active_reference": 0.25718762001081524,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.054011119936457505,
+            "top_scaffold_fraction": 0.032300767805136354,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          },
+          {
+            "brenk_fraction": 0.3934903413601482,
+            "file": "drd2_activity_sa_fast_static_equal_rep4_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.889932525766485,
+            "logged_validity": 0.9841145833333333,
+            "mean_hba": 4.412013760254036,
+            "mean_hbd": 1.4345064831966128,
+            "mean_logp": 3.338165093940198,
+            "mean_mw": 378.38755834876963,
+            "mean_nn_similarity_to_active_reference": 0.21691621383296203,
+            "mean_qed": 0.589606179793653,
+            "mean_ring_count": 3.3580312251918496,
+            "mean_rotatable_bonds": 4.9367557554908705,
+            "mean_sa_raw": 2.935823331760473,
+            "mean_tpsa": 76.32933844932522,
+            "n_unique": 3778,
+            "n_unique_scaffolds": 3446,
+            "n_valid": 3779,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.06377348504895475,
+            "rdkit_validity": 0.9841145833333333,
+            "run": "static_equal_fast_rep4",
+            "scaffold_diversity": 0.9121228163049232,
+            "structural_alert_fraction": 0.4170415453823763,
+            "top100_diversity": 0.8797551943127387,
+            "top100_nn_similarity_to_active_reference": 0.2596592602743136,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.039174166225516144,
+            "top_scaffold_fraction": 0.021175224986765485,
+            "total_rows": 3840,
+            "uniqueness": 0.9997353797300873
+          },
+          {
+            "brenk_fraction": 0.39170628631801374,
+            "file": "drd2_activity_sa_fast_static_equal_rep5_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8897709241957347,
+            "logged_validity": 0.9859375,
+            "mean_hba": 4.348124669836238,
+            "mean_hbd": 1.4167987321711568,
+            "mean_logp": 3.1945832884310637,
+            "mean_mw": 367.6011003697835,
+            "mean_nn_similarity_to_active_reference": 0.21617317709146205,
+            "mean_qed": 0.6016896442784196,
+            "mean_ring_count": 3.198890649762282,
+            "mean_rotatable_bonds": 5.042789223454833,
+            "mean_sa_raw": 2.9092260518682918,
+            "mean_tpsa": 74.21687797147385,
+            "n_unique": 3786,
+            "n_unique_scaffolds": 3391,
+            "n_valid": 3786,
+            "novelty_vs_reference": 0.9997358689910195,
+            "pains_fraction": 0.056788166930797676,
+            "rdkit_validity": 0.9859375,
+            "run": "static_equal_fast_rep5",
+            "scaffold_diversity": 0.8956682514527206,
+            "structural_alert_fraction": 0.41257263602746963,
+            "top100_diversity": 0.8724756042980361,
+            "top100_nn_similarity_to_active_reference": 0.25659595005511443,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.05573164289487586,
+            "top_scaffold_fraction": 0.03671421024828315,
+            "total_rows": 3840,
+            "uniqueness": 1.0
+          }
+        ]
+      }
+    },
+    "DRD2/QED/MW": {
+      "random": {
+        "aggregate": {
+          "brenk_fraction": {
+            "mean": 0.32365289800337743,
+            "sd": 0.010990881636761688
+          },
+          "internal_diversity_sampled": {
+            "mean": 0.8904420446085561,
+            "sd": 0.00210248767079246
+          },
+          "logged_validity": {
+            "mean": 0.9862083333333334,
+            "sd": 0.0010421873698567429
+          },
+          "mean_hba": {
+            "mean": 3.983862087107894,
+            "sd": 0.11536005302720183
+          },
+          "mean_hbd": {
+            "mean": 1.256600052552988,
+            "sd": 0.052022721999287765
+          },
+          "mean_logp": {
+            "mean": 3.0645898872217088,
+            "sd": 0.08798475509225598
+          },
+          "mean_mw": {
+            "mean": 345.39840037690294,
+            "sd": 2.7150567615063292
+          },
+          "mean_nn_similarity_to_active_reference": {
+            "mean": 0.22034994234007754,
+            "sd": 0.0037024079392809937
+          },
+          "mean_qed": {
+            "mean": 0.6606105063209947,
+            "sd": 0.00593680770963644
+          },
+          "mean_ring_count": {
+            "mean": 3.296839439831356,
+            "sd": 0.044065404890862414
+          },
+          "mean_rotatable_bonds": {
+            "mean": 4.113742278300983,
+            "sd": 0.09261051627135153
+          },
+          "mean_sa_raw": {
+            "mean": 2.911954342044679,
+            "sd": 0.0385797574826864
+          },
+          "mean_tpsa": {
+            "mean": 65.91041589279807,
+            "sd": 2.187618367126412
+          },
+          "n_runs": 10,
+          "n_total_rows": 192000,
+          "novelty_vs_reference": {
+            "mean": 0.9999682701830697,
+            "sd": 3.698383654984112e-05
+          },
+          "pains_fraction": {
+            "mean": 0.05733391651108584,
+            "sd": 0.004533766536214527
+          },
+          "rdkit_validity": {
+            "mean": 0.9862083333333334,
+            "sd": 0.0010421873698567429
+          },
+          "scaffold_diversity": {
+            "mean": 0.8505458256557445,
+            "sd": 0.007566083993102464
+          },
+          "structural_alert_fraction": {
+            "mean": 0.34956819240775844,
+            "sd": 0.012743485594674529
+          },
+          "top100_diversity": {
+            "mean": 0.8387550553448366,
+            "sd": 0.003958961666661768
+          },
+          "top100_nn_similarity_to_active_reference": {
+            "mean": 0.3304379628569159,
+            "sd": 0.019685306397438998
+          },
+          "top10_scaffold_coverage": {
+            "mean": 0.03250720646195068,
+            "sd": 0.0026062113737334723
+          },
+          "top_scaffold_fraction": {
+            "mean": 0.01796073063479532,
+            "sd": 0.002143676344598669
+          },
+          "uniqueness": {
+            "mean": 0.9991286965557923,
+            "sd": 0.0002774113116670183
+          }
+        },
+        "per_run": [
+          {
+            "brenk_fraction": 0.3172919634847765,
+            "file": "drd2_qsar_random_deterministic_db002_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8910497499217703,
+            "logged_validity": 0.98703125,
+            "mean_hba": 3.896364307952087,
+            "mean_hbd": 1.2384043058413805,
+            "mean_logp": 3.011492264260463,
+            "mean_mw": 340.1400226900955,
+            "mean_nn_similarity_to_active_reference": 0.22247532270426637,
+            "mean_qed": 0.6701641390955623,
+            "mean_ring_count": 3.278560498126748,
+            "mean_rotatable_bonds": 4.017360561447945,
+            "mean_sa_raw": 2.884927617157388,
+            "mean_tpsa": 64.14832146060894,
+            "n_unique": 18934,
+            "n_unique_scaffolds": 16085,
+            "n_valid": 18951,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.05165954303202997,
+            "rdkit_validity": 0.98703125,
+            "run": "random_deterministic_db002_seed17",
+            "scaffold_diversity": 0.8495299461286574,
+            "structural_alert_fraction": 0.34019312965015036,
+            "top100_diversity": 0.8453815118804185,
+            "top100_nn_similarity_to_active_reference": 0.31860200931231053,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03147776486743425,
+            "top_scaffold_fraction": 0.017006443435090314,
+            "total_rows": 19200,
+            "uniqueness": 0.9991029497124162
+          },
+          {
+            "brenk_fraction": 0.33722712616945927,
+            "file": "drd2_qsar_random_deterministic_mg_seed23_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8885745234946982,
+            "logged_validity": 0.9853645833333333,
+            "mean_hba": 3.9360959881600506,
+            "mean_hbd": 1.2337332840002115,
+            "mean_logp": 3.177148495163594,
+            "mean_mw": 348.9973131772292,
+            "mean_nn_similarity_to_active_reference": 0.22396358465213118,
+            "mean_qed": 0.6572373328400021,
+            "mean_ring_count": 3.3571541836249272,
+            "mean_rotatable_bonds": 4.19208203393414,
+            "mean_sa_raw": 2.8727057575837613,
+            "mean_tpsa": 65.17307098683862,
+            "n_unique": 18893,
+            "n_unique_scaffolds": 16117,
+            "n_valid": 18919,
+            "novelty_vs_reference": 0.9999470703435135,
+            "pains_fraction": 0.06437972408689677,
+            "rdkit_validity": 0.9853645833333333,
+            "run": "random_deterministic_mg_seed23",
+            "scaffold_diversity": 0.8530672735933944,
+            "structural_alert_fraction": 0.3677255668904276,
+            "top100_diversity": 0.8387541361279331,
+            "top100_nn_similarity_to_active_reference": 0.36400955628064985,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.02932302969353729,
+            "top_scaffold_fraction": 0.015402530037580056,
+            "total_rows": 19200,
+            "uniqueness": 0.998625720175485
+          },
+          {
+            "brenk_fraction": 0.3194481154517101,
+            "file": "drd2_qsar_random_deterministic_mg_seed101_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8917895995179761,
+            "logged_validity": 0.9852604166666666,
+            "mean_hba": 4.151979700798224,
+            "mean_hbd": 1.3756409578685838,
+            "mean_logp": 2.939376990537613,
+            "mean_mw": 345.9564191467992,
+            "mean_nn_similarity_to_active_reference": 0.21456001928574053,
+            "mean_qed": 0.6536126129936036,
+            "mean_ring_count": 3.244964846434424,
+            "mean_rotatable_bonds": 4.081936882169477,
+            "mean_sa_raw": 2.886009808993892,
+            "mean_tpsa": 70.36709044774541,
+            "n_unique": 18906,
+            "n_unique_scaffolds": 15988,
+            "n_valid": 18917,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.06031611777766031,
+            "rdkit_validity": 0.9852604166666666,
+            "run": "random_deterministic_mg_seed101",
+            "scaffold_diversity": 0.8456574632391833,
+            "structural_alert_fraction": 0.3451392926996881,
+            "top100_diversity": 0.8356297420701384,
+            "top100_nn_similarity_to_active_reference": 0.3511087809437447,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03496244578440707,
+            "top_scaffold_fraction": 0.019887866285835186,
+            "total_rows": 19200,
+            "uniqueness": 0.9994185124491198
+          },
+          {
+            "brenk_fraction": 0.30796432152847414,
+            "file": "drd2_qsar_random_deterministic_mg_seed202_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8873172178631517,
+            "logged_validity": 0.9868229166666667,
+            "mean_hba": 3.7806512904417584,
+            "mean_hbd": 1.1858869478017628,
+            "mean_logp": 3.1569096015200313,
+            "mean_mw": 342.30658320578453,
+            "mean_nn_similarity_to_active_reference": 0.22175664728162212,
+            "mean_qed": 0.667358521137911,
+            "mean_ring_count": 3.3458067240196336,
+            "mean_rotatable_bonds": 4.025386604739537,
+            "mean_sa_raw": 2.8736294056884324,
+            "mean_tpsa": 62.695892225682165,
+            "n_unique": 18926,
+            "n_unique_scaffolds": 16141,
+            "n_valid": 18947,
+            "novelty_vs_reference": 0.9999471626334143,
+            "pains_fraction": 0.05209267957988072,
+            "rdkit_validity": 0.9868229166666667,
+            "run": "random_deterministic_mg_seed202",
+            "scaffold_diversity": 0.8528479340589665,
+            "structural_alert_fraction": 0.33277035942365546,
+            "top100_diversity": 0.8335445083561965,
+            "top100_nn_similarity_to_active_reference": 0.31051086709392217,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.030962696819190533,
+            "top_scaffold_fraction": 0.015428511043009616,
+            "total_rows": 19200,
+            "uniqueness": 0.9988916451153217
+          },
+          {
+            "brenk_fraction": 0.31997677119628337,
+            "file": "drd2_qsar_random_deterministic_mg_seed303_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8888247827010253,
+            "logged_validity": 0.9865625,
+            "mean_hba": 3.9411888924084044,
+            "mean_hbd": 1.2340301974448316,
+            "mean_logp": 3.118813964206527,
+            "mean_mw": 346.5398564565516,
+            "mean_nn_similarity_to_active_reference": 0.22062180998049166,
+            "mean_qed": 0.6590313430471967,
+            "mean_ring_count": 3.2318656952803293,
+            "mean_rotatable_bonds": 4.243268926195755,
+            "mean_sa_raw": 2.872405750099087,
+            "mean_tpsa": 65.51445834653151,
+            "n_unique": 18925,
+            "n_unique_scaffolds": 15770,
+            "n_valid": 18942,
+            "novelty_vs_reference": 0.9999471598414795,
+            "pains_fraction": 0.055115616091225846,
+            "rdkit_validity": 0.9865625,
+            "run": "random_deterministic_mg_seed303",
+            "scaffold_diversity": 0.8332892998678996,
+            "structural_alert_fraction": 0.34595079717030935,
+            "top100_diversity": 0.8381013784411465,
+            "top100_nn_similarity_to_active_reference": 0.32535148387292917,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03709379128137384,
+            "top_scaffold_fraction": 0.020660501981505944,
+            "total_rows": 19200,
+            "uniqueness": 0.9991025234927674
+          },
+          {
+            "brenk_fraction": 0.33894636824324326,
+            "file": "drd2_qsar_random_deterministic_mg_seed404_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8907551893192789,
+            "logged_validity": 0.9866666666666667,
+            "mean_hba": 4.085567989864865,
+            "mean_hbd": 1.282886402027027,
+            "mean_logp": 3.003966554581927,
+            "mean_mw": 346.86641765202705,
+            "mean_nn_similarity_to_active_reference": 0.2208309486834903,
+            "mean_qed": 0.6554548933699325,
+            "mean_ring_count": 3.273067989864865,
+            "mean_rotatable_bonds": 4.198215793918919,
+            "mean_sa_raw": 2.922619782424575,
+            "mean_tpsa": 67.15881123310811,
+            "n_unique": 18927,
+            "n_unique_scaffolds": 16133,
+            "n_valid": 18944,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.057801942567567564,
+            "rdkit_validity": 0.9866666666666667,
+            "run": "random_deterministic_mg_seed404",
+            "scaffold_diversity": 0.8523801976013103,
+            "structural_alert_fraction": 0.3638091216216216,
+            "top100_diversity": 0.8392440644953069,
+            "top100_nn_similarity_to_active_reference": 0.33164551167029543,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03080255719342738,
+            "top_scaffold_fraction": 0.01843926665609975,
+            "total_rows": 19200,
+            "uniqueness": 0.9991026182432432
+          },
+          {
+            "brenk_fraction": 0.3164463246959281,
+            "file": "drd2_qsar_random_deterministic_mg_seed505_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8902254502151498,
+            "logged_validity": 0.9848958333333333,
+            "mean_hba": 4.052670544685352,
+            "mean_hbd": 1.2644103648863037,
+            "mean_logp": 3.0492972501322066,
+            "mean_mw": 347.34761797990484,
+            "mean_nn_similarity_to_active_reference": 0.22028770789474947,
+            "mean_qed": 0.6613944843997884,
+            "mean_ring_count": 3.3489687995769435,
+            "mean_rotatable_bonds": 4.155473294553146,
+            "mean_sa_raw": 2.9689772048158467,
+            "mean_tpsa": 66.11396192490746,
+            "n_unique": 18901,
+            "n_unique_scaffolds": 16305,
+            "n_valid": 18910,
+            "novelty_vs_reference": 0.999894185492831,
+            "pains_fraction": 0.05304071919619249,
+            "rdkit_validity": 0.9848958333333333,
+            "run": "random_deterministic_mg_seed505",
+            "scaffold_diversity": 0.8626527696947252,
+            "structural_alert_fraction": 0.3400846113167636,
+            "top100_diversity": 0.8326553544298255,
+            "top100_nn_similarity_to_active_reference": 0.3482103342565925,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.029522247500132267,
+            "top_scaffold_fraction": 0.015237289032326332,
+            "total_rows": 19200,
+            "uniqueness": 0.9995240613432047
+          },
+          {
+            "brenk_fraction": 0.3396046929500053,
+            "file": "drd2_qsar_random_deterministic_mg_seed606_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8948077980799611,
+            "logged_validity": 0.9855208333333333,
+            "mean_hba": 3.9964591480815983,
+            "mean_hbd": 1.2925694958249656,
+            "mean_logp": 3.0893531524151796,
+            "mean_mw": 345.3467877074305,
+            "mean_nn_similarity_to_active_reference": 0.21394024608462636,
+            "mean_qed": 0.6534078902864391,
+            "mean_ring_count": 3.308265511045344,
+            "mean_rotatable_bonds": 4.0855089314026,
+            "mean_sa_raw": 2.9598448216348157,
+            "mean_tpsa": 66.8549957721171,
+            "n_unique": 18912,
+            "n_unique_scaffolds": 16037,
+            "n_valid": 18922,
+            "novelty_vs_reference": 0.9999471235194586,
+            "pains_fraction": 0.06389388013952013,
+            "rdkit_validity": 0.9855208333333333,
+            "run": "random_deterministic_mg_seed606",
+            "scaffold_diversity": 0.8479801184433164,
+            "structural_alert_fraction": 0.3690941760913223,
+            "top100_diversity": 0.8414845154369468,
+            "top100_nn_similarity_to_active_reference": 0.31451535512633483,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.0353743654822335,
+            "top_scaffold_fraction": 0.02088620981387479,
+            "total_rows": 19200,
+            "uniqueness": 0.9994715146390445
+          },
+          {
+            "brenk_fraction": 0.32258234519104084,
+            "file": "drd2_qsar_random_deterministic_mg_seed707_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8894182573698796,
+            "logged_validity": 0.98828125,
+            "mean_hba": 3.892121212121212,
+            "mean_hbd": 1.2410013175230568,
+            "mean_logp": 3.154841927272729,
+            "mean_mw": 347.3104324110672,
+            "mean_nn_similarity_to_active_reference": 0.22564447684086295,
+            "mean_qed": 0.6667122740447958,
+            "mean_ring_count": 3.308353096179183,
+            "mean_rotatable_bonds": 4.175177865612648,
+            "mean_sa_raw": 2.9275091449012347,
+            "mean_tpsa": 63.76365322793149,
+            "n_unique": 18957,
+            "n_unique_scaffolds": 16186,
+            "n_valid": 18975,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.057760210803689066,
+            "rdkit_validity": 0.98828125,
+            "run": "random_deterministic_mg_seed707",
+            "scaffold_diversity": 0.8538270823442528,
+            "structural_alert_fraction": 0.3487220026350461,
+            "top100_diversity": 0.842137320139374,
+            "top100_nn_similarity_to_active_reference": 0.30303343358967394,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03238909110091259,
+            "top_scaffold_fraction": 0.018251833095954,
+            "total_rows": 19200,
+            "uniqueness": 0.9990513833992095
+          },
+          {
+            "brenk_fraction": 0.31704095112285335,
+            "file": "drd2_qsar_random_deterministic_mg_seed808_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8916578776026705,
+            "logged_validity": 0.9856770833333334,
+            "mean_hba": 4.10552179656539,
+            "mean_hbd": 1.217437252311757,
+            "mean_logp": 2.944698672126818,
+            "mean_mw": 343.17255334214,
+            "mean_nn_similarity_to_active_reference": 0.21941865999279464,
+            "mean_qed": 0.661731571994716,
+            "mean_ring_count": 3.2713870541611625,
+            "mean_rotatable_bonds": 3.963011889035667,
+            "mean_sa_raw": 2.9509141271477586,
+            "mean_tpsa": 67.31390330250991,
+            "n_unique": 18906,
+            "n_unique_scaffolds": 16150,
+            "n_valid": 18925,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.05727873183619551,
+            "rdkit_validity": 0.9856770833333334,
+            "run": "random_deterministic_mg_seed808",
+            "scaffold_diversity": 0.85422617158574,
+            "structural_alert_fraction": 0.3421928665785997,
+            "top100_diversity": 0.8406180220710802,
+            "top100_nn_similarity_to_active_reference": 0.33739229642270596,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03316407489685814,
+            "top_scaffold_fraction": 0.018406854966677245,
+            "total_rows": 19200,
+            "uniqueness": 0.998996036988111
+          }
+        ]
+      },
+      "real": {
+        "aggregate": {
+          "brenk_fraction": {
+            "mean": 0.3258405691632384,
+            "sd": 0.007793463222963448
+          },
+          "internal_diversity_sampled": {
+            "mean": 0.8902462492645636,
+            "sd": 0.001437110489170286
+          },
+          "logged_validity": {
+            "mean": 0.98528125,
+            "sd": 0.0009873573892960712
+          },
+          "mean_hba": {
+            "mean": 3.9555509926970727,
+            "sd": 0.08577392976354581
+          },
+          "mean_hbd": {
+            "mean": 1.2607766546268169,
+            "sd": 0.036963251712527866
+          },
+          "mean_logp": {
+            "mean": 3.107340173178283,
+            "sd": 0.0717304077581069
+          },
+          "mean_mw": {
+            "mean": 345.9540311797873,
+            "sd": 2.9808207215721665
+          },
+          "mean_nn_similarity_to_active_reference": {
+            "mean": 0.2207329427808493,
+            "sd": 0.002355022153505795
+          },
+          "mean_qed": {
+            "mean": 0.6551263127815233,
+            "sd": 0.006310636621946386
+          },
+          "mean_ring_count": {
+            "mean": 3.331255387060625,
+            "sd": 0.026811464135062812
+          },
+          "mean_rotatable_bonds": {
+            "mean": 4.120694774634451,
+            "sd": 0.07981356573863285
+          },
+          "mean_sa_raw": {
+            "mean": 2.9144036978726753,
+            "sd": 0.030015504813847575
+          },
+          "mean_tpsa": {
+            "mean": 65.52815690860656,
+            "sd": 1.7661698882019983
+          },
+          "n_runs": 10,
+          "n_total_rows": 192000,
+          "novelty_vs_reference": {
+            "mean": 0.9999576394226217,
+            "sd": 4.178471509044696e-05
+          },
+          "pains_fraction": {
+            "mean": 0.057977930381224424,
+            "sd": 0.003801985007433883
+          },
+          "rdkit_validity": {
+            "mean": 0.9852916666666667,
+            "sd": 0.0009958682002264303
+          },
+          "scaffold_diversity": {
+            "mean": 0.8477748761332629,
+            "sd": 0.009824141592248517
+          },
+          "structural_alert_fraction": {
+            "mean": 0.35236619553773385,
+            "sd": 0.007669776163634949
+          },
+          "top100_diversity": {
+            "mean": 0.8366443598365728,
+            "sd": 0.0054292156707783
+          },
+          "top100_nn_similarity_to_active_reference": {
+            "mean": 0.35171246783968124,
+            "sd": 0.019178366779188466
+          },
+          "top10_scaffold_coverage": {
+            "mean": 0.03316990646844248,
+            "sd": 0.0028883980534692498
+          },
+          "top_scaffold_fraction": {
+            "mean": 0.018098061628813555,
+            "sd": 0.0019603282776327925
+          },
+          "uniqueness": {
+            "mean": 0.9988846532047247,
+            "sd": 0.00014404360763274894
+          }
+        },
+        "per_run": [
+          {
+            "brenk_fraction": 0.3241073315022185,
+            "file": "drd2_qsar_deterministic_db002_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8914024147571817,
+            "logged_validity": 0.9860416666666667,
+            "mean_hba": 3.9818297063173462,
+            "mean_hbd": 1.2702831185294738,
+            "mean_logp": 3.117469880097192,
+            "mean_mw": 348.364775934925,
+            "mean_nn_similarity_to_active_reference": 0.21774024968971017,
+            "mean_qed": 0.6547975808155504,
+            "mean_ring_count": 3.313173462919924,
+            "mean_rotatable_bonds": 4.274878512571308,
+            "mean_sa_raw": 2.9172732231850973,
+            "mean_tpsa": 65.9256771603634,
+            "n_unique": 18910,
+            "n_unique_scaffolds": 16137,
+            "n_valid": 18932,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.054193957320938096,
+            "rdkit_validity": 0.9860416666666667,
+            "run": "deterministic_db002_seed17",
+            "scaffold_diversity": 0.853358011634056,
+            "structural_alert_fraction": 0.3489330234523558,
+            "top100_diversity": 0.8431722792871437,
+            "top100_nn_similarity_to_active_reference": 0.35974974713970304,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03141195134849286,
+            "top_scaffold_fraction": 0.018191433104177684,
+            "total_rows": 19200,
+            "uniqueness": 0.9988379463342489
+          },
+          {
+            "brenk_fraction": 0.32037703876297396,
+            "file": "drd2_qsar_deterministic_mg_seed23_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8923770726753982,
+            "logged_validity": 0.9835416666666666,
+            "mean_hba": 4.0199110357975005,
+            "mean_hbd": 1.2636094047871214,
+            "mean_logp": 3.013903303325568,
+            "mean_mw": 346.1063116394832,
+            "mean_nn_similarity_to_active_reference": 0.21732714817970952,
+            "mean_qed": 0.6578147426392713,
+            "mean_ring_count": 3.357657276000847,
+            "mean_rotatable_bonds": 4.04278754501165,
+            "mean_sa_raw": 2.9516677024866844,
+            "mean_tpsa": 66.11415854691803,
+            "n_unique": 18861,
+            "n_unique_scaffolds": 16247,
+            "n_valid": 18884,
+            "novelty_vs_reference": 0.9998939610837178,
+            "pains_fraction": 0.055231942385087905,
+            "rdkit_validity": 0.9835416666666666,
+            "run": "deterministic_mg_seed23",
+            "scaffold_diversity": 0.8614071364190657,
+            "structural_alert_fraction": 0.3466426604532938,
+            "top100_diversity": 0.8331698630583846,
+            "top100_nn_similarity_to_active_reference": 0.3564799899084951,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.02905466306134351,
+            "top_scaffold_fraction": 0.014262234239966068,
+            "total_rows": 19200,
+            "uniqueness": 0.9987820377038763
+          },
+          {
+            "brenk_fraction": 0.328125824668813,
+            "file": "drd2_qsar_deterministic_mg_seed101_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8915894822282964,
+            "logged_validity": 0.9867708333333334,
+            "mean_hba": 3.9435266796854385,
+            "mean_hbd": 1.2689080065445717,
+            "mean_logp": 3.0848869039953573,
+            "mean_mw": 346.9807209584631,
+            "mean_nn_similarity_to_active_reference": 0.21967642342031193,
+            "mean_qed": 0.6562650445980894,
+            "mean_ring_count": 3.307594869900248,
+            "mean_rotatable_bonds": 4.111785506940413,
+            "mean_sa_raw": 2.91498399122386,
+            "mean_tpsa": 66.00763287063916,
+            "n_unique": 18926,
+            "n_unique_scaffolds": 16021,
+            "n_valid": 18947,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.05531218662585106,
+            "rdkit_validity": 0.9868229166666667,
+            "run": "deterministic_mg_seed101",
+            "scaffold_diversity": 0.8465074500686885,
+            "structural_alert_fraction": 0.3535652082123819,
+            "top100_diversity": 0.8327107170557576,
+            "top100_nn_similarity_to_active_reference": 0.3486111828921549,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03122688365211878,
+            "top_scaffold_fraction": 0.017172144140336045,
+            "total_rows": 19200,
+            "uniqueness": 0.9988916451153217
+          },
+          {
+            "brenk_fraction": 0.3281473249722178,
+            "file": "drd2_qsar_deterministic_mg_seed202_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8912369727791332,
+            "logged_validity": 0.98421875,
+            "mean_hba": 3.841562152722654,
+            "mean_hbd": 1.2151664285336297,
+            "mean_logp": 3.1298534905011395,
+            "mean_mw": 343.5965906228502,
+            "mean_nn_similarity_to_active_reference": 0.2217428700521941,
+            "mean_qed": 0.6602434566333281,
+            "mean_ring_count": 3.331110758321427,
+            "mean_rotatable_bonds": 4.043604804995502,
+            "mean_sa_raw": 2.9478312777339544,
+            "mean_tpsa": 63.58404296978357,
+            "n_unique": 18878,
+            "n_unique_scaffolds": 16222,
+            "n_valid": 18897,
+            "novelty_vs_reference": 0.9999470282868947,
+            "pains_fraction": 0.05254802349579298,
+            "rdkit_validity": 0.98421875,
+            "run": "deterministic_mg_seed202",
+            "scaffold_diversity": 0.859307129992584,
+            "structural_alert_fraction": 0.3518018733132243,
+            "top100_diversity": 0.8314565160176586,
+            "top100_nn_similarity_to_active_reference": 0.3648620014617614,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.0319949147155419,
+            "top_scaffold_fraction": 0.01774552389024261,
+            "total_rows": 19200,
+            "uniqueness": 0.9989945493993756
+          },
+          {
+            "brenk_fraction": 0.32848760374266534,
+            "file": "drd2_qsar_deterministic_mg_seed303_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.888946032006251,
+            "logged_validity": 0.9852083333333334,
+            "mean_hba": 4.134587936776445,
+            "mean_hbd": 1.3175450652851932,
+            "mean_logp": 2.977875880953641,
+            "mean_mw": 348.7769097108421,
+            "mean_nn_similarity_to_active_reference": 0.21991971588581588,
+            "mean_qed": 0.6515148437912989,
+            "mean_ring_count": 3.3283818787334143,
+            "mean_rotatable_bonds": 4.154675688534123,
+            "mean_sa_raw": 2.951283992011498,
+            "mean_tpsa": 68.98982079610933,
+            "n_unique": 18896,
+            "n_unique_scaffolds": 16011,
+            "n_valid": 18917,
+            "novelty_vs_reference": 0.9999470787468248,
+            "pains_fraction": 0.0601575302637839,
+            "rdkit_validity": 0.9852604166666666,
+            "run": "deterministic_mg_seed303",
+            "scaffold_diversity": 0.8473221845893311,
+            "structural_alert_fraction": 0.3562404186710366,
+            "top100_diversity": 0.8422845232554809,
+            "top100_nn_similarity_to_active_reference": 0.34304047081467015,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03545723962743438,
+            "top_scaffold_fraction": 0.021168501270110076,
+            "total_rows": 19200,
+            "uniqueness": 0.9988898874028651
+          },
+          {
+            "brenk_fraction": 0.3327516920473773,
+            "file": "drd2_qsar_deterministic_mg_seed404_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8887522234630504,
+            "logged_validity": 0.985,
+            "mean_hba": 3.896573604060914,
+            "mean_hbd": 1.262425972927242,
+            "mean_logp": 3.148750094120137,
+            "mean_mw": 344.2373599830795,
+            "mean_nn_similarity_to_active_reference": 0.22245665059979272,
+            "mean_qed": 0.6586466423434856,
+            "mean_ring_count": 3.333544839255499,
+            "mean_rotatable_bonds": 4.126269035532995,
+            "mean_sa_raw": 2.881372783041861,
+            "mean_tpsa": 64.17729219543148,
+            "n_unique": 18889,
+            "n_unique_scaffolds": 15928,
+            "n_valid": 18912,
+            "novelty_vs_reference": 0.9998941182698925,
+            "pains_fraction": 0.06128384094754653,
+            "rdkit_validity": 0.985,
+            "run": "deterministic_mg_seed404",
+            "scaffold_diversity": 0.8432420985758907,
+            "structural_alert_fraction": 0.36183375634517767,
+            "top100_diversity": 0.8303947627494037,
+            "top100_nn_similarity_to_active_reference": 0.36232705141202093,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03488803007041135,
+            "top_scaffold_fraction": 0.019111652284398328,
+            "total_rows": 19200,
+            "uniqueness": 0.9987838409475466
+          },
+          {
+            "brenk_fraction": 0.3122128940281958,
+            "file": "drd2_qsar_deterministic_mg_seed505_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8883358911739808,
+            "logged_validity": 0.98640625,
+            "mean_hba": 3.873541369660489,
+            "mean_hbd": 1.1910871746132319,
+            "mean_logp": 3.130674374042982,
+            "mean_mw": 344.31455868842073,
+            "mean_nn_similarity_to_active_reference": 0.222147027251863,
+            "mean_qed": 0.6624159406515655,
+            "mean_ring_count": 3.333174930038545,
+            "mean_rotatable_bonds": 4.043244099477269,
+            "mean_sa_raw": 2.8990920959027466,
+            "mean_tpsa": 63.93810444057237,
+            "n_unique": 18917,
+            "n_unique_scaffolds": 16016,
+            "n_valid": 18939,
+            "novelty_vs_reference": 0.9999471374953746,
+            "pains_fraction": 0.0564443740429801,
+            "rdkit_validity": 0.98640625,
+            "run": "deterministic_mg_seed505",
+            "scaffold_diversity": 0.8466458740815139,
+            "structural_alert_fraction": 0.3394054596335604,
+            "top100_diversity": 0.8400578983913858,
+            "top100_nn_similarity_to_active_reference": 0.32028802584649535,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.0311888777290268,
+            "top_scaffold_fraction": 0.016916001480150128,
+            "total_rows": 19200,
+            "uniqueness": 0.9988383758382174
+          },
+          {
+            "brenk_fraction": 0.3396764985727878,
+            "file": "drd2_qsar_deterministic_mg_seed606_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8888757959037739,
+            "logged_validity": 0.9853125,
+            "mean_hba": 3.9491489586637067,
+            "mean_hbd": 1.2938999894280578,
+            "mean_logp": 3.1161268971350053,
+            "mean_mw": 346.83305714134684,
+            "mean_nn_similarity_to_active_reference": 0.22234598312949594,
+            "mean_qed": 0.6518724389470346,
+            "mean_ring_count": 3.359023152553124,
+            "mean_rotatable_bonds": 4.230521196743842,
+            "mean_sa_raw": 2.9254047973518533,
+            "mean_tpsa": 65.6215255312401,
+            "n_unique": 18893,
+            "n_unique_scaffolds": 16099,
+            "n_valid": 18918,
+            "novelty_vs_reference": 0.9999470703435135,
+            "pains_fraction": 0.058779997885611585,
+            "rdkit_validity": 0.9853125,
+            "run": "deterministic_mg_seed606",
+            "scaffold_diversity": 0.8521145397766369,
+            "structural_alert_fraction": 0.36430912358600276,
+            "top100_diversity": 0.8317588669562346,
+            "top100_nn_similarity_to_active_reference": 0.34908736393918943,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03170486423543111,
+            "top_scaffold_fraction": 0.017096279045148998,
+            "total_rows": 19200,
+            "uniqueness": 0.9986785072417803
+          },
+          {
+            "brenk_fraction": 0.31748044810822235,
+            "file": "drd2_qsar_deterministic_mg_seed707_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8900424627462803,
+            "logged_validity": 0.985625,
+            "mean_hba": 3.9029274994715704,
+            "mean_hbd": 1.2415979708306912,
+            "mean_logp": 3.114962260621435,
+            "mean_mw": 340.0709054639611,
+            "mean_nn_similarity_to_active_reference": 0.22480142448850926,
+            "mean_qed": 0.6576654777002748,
+            "mean_ring_count": 3.279697738321708,
+            "mean_rotatable_bonds": 4.077626294652293,
+            "mean_sa_raw": 2.8835941511387255,
+            "mean_tpsa": 63.56303582752061,
+            "n_unique": 18904,
+            "n_unique_scaffolds": 15636,
+            "n_valid": 18924,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.06145635172268019,
+            "rdkit_validity": 0.985625,
+            "run": "deterministic_mg_seed707",
+            "scaffold_diversity": 0.8271265340668642,
+            "structural_alert_fraction": 0.3449587824984147,
+            "top100_diversity": 0.8369363394821766,
+            "top100_nn_similarity_to_active_reference": 0.38646711226523267,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03761108760050783,
+            "top_scaffold_fraction": 0.02041895895048667,
+            "total_rows": 19200,
+            "uniqueness": 0.9989431409849926
+          },
+          {
+            "brenk_fraction": 0.3270390352269121,
+            "file": "drd2_qsar_deterministic_mg_seed808_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8909041449122904,
+            "logged_validity": 0.9846875,
+            "mean_hba": 4.011900983814662,
+            "mean_hbd": 1.283243414788956,
+            "mean_logp": 3.2388986469903753,
+            "mean_mw": 350.2591216545012,
+            "mean_nn_similarity_to_active_reference": 0.2191719351110903,
+            "mean_qed": 0.6400269596953349,
+            "mean_ring_count": 3.369194964561515,
+            "mean_rotatable_bonds": 4.101555061885116,
+            "mean_sa_raw": 2.87153296465047,
+            "mean_tpsa": 67.36027874748757,
+            "n_unique": 18891,
+            "n_unique_scaffolds": 15882,
+            "n_valid": 18906,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.06437109912197186,
+            "rdkit_validity": 0.9846875,
+            "run": "deterministic_mg_seed808",
+            "scaffold_diversity": 0.8407178021279974,
+            "structural_alert_fraction": 0.3559716492118904,
+            "top100_diversity": 0.8445018321121024,
+            "top100_nn_similarity_to_active_reference": 0.32621173271708953,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.037160552644116246,
+            "top_scaffold_fraction": 0.018897887883118945,
+            "total_rows": 19200,
+            "uniqueness": 0.9992066010790225
+          }
+        ]
+      },
+      "static": {
+        "aggregate": {
+          "brenk_fraction": {
+            "mean": 0.3210039890545373,
+            "sd": 0.009558125413543157
+          },
+          "internal_diversity_sampled": {
+            "mean": 0.8899963001486789,
+            "sd": 0.0018664536538227318
+          },
+          "logged_validity": {
+            "mean": 0.98575,
+            "sd": 0.0011993876837671162
+          },
+          "mean_hba": {
+            "mean": 3.9403515439545806,
+            "sd": 0.05379800365400186
+          },
+          "mean_hbd": {
+            "mean": 1.2590939370076317,
+            "sd": 0.048421298664992764
+          },
+          "mean_logp": {
+            "mean": 3.110634851834417,
+            "sd": 0.05989263289503603
+          },
+          "mean_mw": {
+            "mean": 345.4327625478061,
+            "sd": 3.509336323708789
+          },
+          "mean_nn_similarity_to_active_reference": {
+            "mean": 0.2207177988617236,
+            "sd": 0.0023739953808665005
+          },
+          "mean_qed": {
+            "mean": 0.6582469040343406,
+            "sd": 0.004364542711872786
+          },
+          "mean_ring_count": {
+            "mean": 3.291841288371257,
+            "sd": 0.06394379139183967
+          },
+          "mean_rotatable_bonds": {
+            "mean": 4.133687662094161,
+            "sd": 0.13707550177969546
+          },
+          "mean_sa_raw": {
+            "mean": 2.873291822730495,
+            "sd": 0.033791862060761305
+          },
+          "mean_tpsa": {
+            "mean": 65.60426964058853,
+            "sd": 1.126212482930119
+          },
+          "n_runs": 5,
+          "n_total_rows": 96000,
+          "novelty_vs_reference": {
+            "mean": 0.9999894028506332,
+            "sd": 2.3695946351928356e-05
+          },
+          "pains_fraction": {
+            "mean": 0.057878301518848145,
+            "sd": 0.002780514651876066
+          },
+          "rdkit_validity": {
+            "mean": 0.98575,
+            "sd": 0.0011993876837671162
+          },
+          "scaffold_diversity": {
+            "mean": 0.8401818099986017,
+            "sd": 0.009456466870366437
+          },
+          "structural_alert_fraction": {
+            "mean": 0.3465981450726764,
+            "sd": 0.010224082778525314
+          },
+          "top100_diversity": {
+            "mean": 0.8384432754220329,
+            "sd": 0.003924988360072322
+          },
+          "top100_nn_similarity_to_active_reference": {
+            "mean": 0.3285821243839709,
+            "sd": 0.015073704857354934
+          },
+          "top10_scaffold_coverage": {
+            "mean": 0.03585864280285219,
+            "sd": 0.0016898017078312687
+          },
+          "top_scaffold_fraction": {
+            "mean": 0.019282827885294163,
+            "sd": 0.0012052704132957078
+          },
+          "uniqueness": {
+            "mean": 0.9989748153630122,
+            "sd": 0.00023896013776847537
+          }
+        },
+        "per_run": [
+          {
+            "brenk_fraction": 0.3105304829770388,
+            "file": "drd2_qsar_static_equal_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8880612102714975,
+            "logged_validity": 0.98671875,
+            "mean_hba": 3.961678543151227,
+            "mean_hbd": 1.270942201108472,
+            "mean_logp": 3.0527599762470325,
+            "mean_mw": 348.95387849036683,
+            "mean_nn_similarity_to_active_reference": 0.2235549708195797,
+            "mean_qed": 0.6633985273159145,
+            "mean_ring_count": 3.296859329638427,
+            "mean_rotatable_bonds": 4.2157297439957775,
+            "mean_sa_raw": 2.8702846714876666,
+            "mean_tpsa": 65.76046239113222,
+            "n_unique": 18926,
+            "n_unique_scaffolds": 15910,
+            "n_valid": 18945,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.05320665083135392,
+            "rdkit_validity": 0.98671875,
+            "run": "static_equal_seed17",
+            "scaffold_diversity": 0.8406425023776815,
+            "structural_alert_fraction": 0.33401953021905517,
+            "top100_diversity": 0.8391682397339122,
+            "top100_nn_similarity_to_active_reference": 0.3315445095375809,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03529536087921378,
+            "top_scaffold_fraction": 0.019074289337419423,
+            "total_rows": 19200,
+            "uniqueness": 0.9989970968593297
+          },
+          {
+            "brenk_fraction": 0.3336149094556782,
+            "file": "drd2_qsar_static_equal_rep2_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8889737230680094,
+            "logged_validity": 0.9865104166666666,
+            "mean_hba": 4.007813737395069,
+            "mean_hbd": 1.325853967583549,
+            "mean_logp": 3.066381278179612,
+            "mean_mw": 348.21930278232406,
+            "mean_nn_similarity_to_active_reference": 0.22109558683170408,
+            "mean_qed": 0.657466200306214,
+            "mean_ring_count": 3.1988279393907395,
+            "mean_rotatable_bonds": 4.311335198775144,
+            "mean_sa_raw": 2.8543437315398026,
+            "mean_tpsa": 67.50559474156591,
+            "n_unique": 18924,
+            "n_unique_scaffolds": 15684,
+            "n_valid": 18941,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.059394963307111553,
+            "rdkit_validity": 0.9865104166666666,
+            "run": "static_equal_rep2",
+            "scaffold_diversity": 0.8287888395688016,
+            "structural_alert_fraction": 0.3602238530172641,
+            "top100_diversity": 0.8360789284464988,
+            "top100_nn_similarity_to_active_reference": 0.31874436677821416,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03852251109701966,
+            "top_scaffold_fraction": 0.02087296554639611,
+            "total_rows": 19200,
+            "uniqueness": 0.9991024761100259
+          },
+          {
+            "brenk_fraction": 0.3160701087530356,
+            "file": "drd2_qsar_static_equal_rep3_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.892836161539941,
+            "logged_validity": 0.9865625,
+            "mean_hba": 3.910727483898216,
+            "mean_hbd": 1.1904761904761905,
+            "mean_logp": 3.0870435904339577,
+            "mean_mw": 340.9963985323619,
+            "mean_nn_similarity_to_active_reference": 0.21696854938847546,
+            "mean_qed": 0.6610361735825151,
+            "mean_ring_count": 3.2773202407348747,
+            "mean_rotatable_bonds": 3.9583465315172632,
+            "mean_sa_raw": 2.8783270940095407,
+            "mean_tpsa": 64.83348273677542,
+            "n_unique": 18928,
+            "n_unique_scaffolds": 15907,
+            "n_valid": 18942,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.057649667405764965,
+            "rdkit_validity": 0.9865625,
+            "run": "static_equal_rep3",
+            "scaffold_diversity": 0.8403951817413355,
+            "structural_alert_fraction": 0.3418329637841833,
+            "top100_diversity": 0.8440711158997072,
+            "top100_nn_similarity_to_active_reference": 0.30805508824178196,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03581994928148774,
+            "top_scaffold_fraction": 0.02007607776838546,
+            "total_rows": 19200,
+            "uniqueness": 0.9992609016999261
+          },
+          {
+            "brenk_fraction": 0.31655208884188263,
+            "file": "drd2_qsar_static_equal_rep4_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8893228749824003,
+            "logged_validity": 0.9848958333333333,
+            "mean_hba": 3.8663670015864624,
+            "mean_hbd": 1.2574828133262823,
+            "mean_logp": 3.156445374933899,
+            "mean_mw": 342.5392465891063,
+            "mean_nn_similarity_to_active_reference": 0.22126021035324533,
+            "mean_qed": 0.6574627022739291,
+            "mean_ring_count": 3.3098360655737706,
+            "mean_rotatable_bonds": 4.0556848228450555,
+            "mean_sa_raw": 2.83685754375769,
+            "mean_tpsa": 64.88333421470122,
+            "n_unique": 18884,
+            "n_unique_scaffolds": 15793,
+            "n_valid": 18910,
+            "novelty_vs_reference": 1.0,
+            "pains_fraction": 0.060285563194077206,
+            "rdkit_validity": 0.9848958333333333,
+            "run": "static_equal_rep4",
+            "scaffold_diversity": 0.8363164583774624,
+            "structural_alert_fraction": 0.3437334743521946,
+            "top100_diversity": 0.8336312514263642,
+            "top100_nn_similarity_to_active_reference": 0.3440866451855878,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.035797500529548824,
+            "top_scaffold_fraction": 0.017845795382334252,
+            "total_rows": 19200,
+            "uniqueness": 0.9986250661025913
+          },
+          {
+            "brenk_fraction": 0.32825235524505136,
+            "file": "drd2_qsar_static_equal_rep5_1.csv",
+            "internal_diversity_sample_size": 1000,
+            "internal_diversity_sampled": 0.8907875308815462,
+            "logged_validity": 0.9840625,
+            "mean_hba": 3.955170953741929,
+            "mean_hbd": 1.2507145125436647,
+            "mean_logp": 3.190544039377582,
+            "mean_mw": 346.4549863448714,
+            "mean_nn_similarity_to_active_reference": 0.2207096769156134,
+            "mean_qed": 0.6518709166931301,
+            "mean_ring_count": 3.3763628665184715,
+            "mean_rotatable_bonds": 4.127342013337567,
+            "mean_sa_raw": 2.9266460728577743,
+            "mean_tpsa": 65.03847411876787,
+            "n_unique": 18873,
+            "n_unique_scaffolds": 16132,
+            "n_valid": 18894,
+            "novelty_vs_reference": 0.9999470142531659,
+            "pains_fraction": 0.0588546628559331,
+            "rdkit_validity": 0.9840625,
+            "run": "static_equal_rep5",
+            "scaffold_diversity": 0.8547660679277275,
+            "structural_alert_fraction": 0.35318090399068486,
+            "top100_diversity": 0.8392668416036821,
+            "top100_nn_similarity_to_active_reference": 0.3404800121766897,
+            "top100_size": 100,
+            "top10_scaffold_coverage": 0.03385789222699094,
+            "top_scaffold_fraction": 0.01854501139193557,
+            "total_rows": 19200,
+            "uniqueness": 0.9988885360431883
+          }
+        ]
+      }
+    }
+  }
+}

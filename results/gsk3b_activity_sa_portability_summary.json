@@ -1,0 +1,23 @@
+{
+  "delta_sd": 0.009556480716930299,
+  "mean_real_minus_random": 0.0026256448764707487,
+  "n_paired_repeats": 3,
+  "positive_count": 1,
+  "primary_metric": "last50_mean_validation_joint",
+  "random_mean": 0.4267709420981555,
+  "real_mean": 0.4293965869746263,
+  "real_minus_random_deltas": [
+    0.013652200542923432,
+    -0.0025166527766572466,
+    -0.0032586131368539384
+  ],
+  "real_minus_static": -0.0008858313735868872,
+  "seeds": [
+    17,
+    23,
+    101
+  ],
+  "setting": "GSK3B activity/SA portability smoke test",
+  "static_mean": 0.4302824183482132,
+  "target": "GSK3B"
+}\n
