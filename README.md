@@ -1,92 +1,79 @@
 # Validation-Disentangled Molecular RL Audit
 
-Reproducibility package for a validation-disentangled diagnostic framework for adaptive reward weighting in molecular generation.
+Reproducibility materials for a diagnostic framework that audits
+validation-driven adaptive reward weighting in molecular generation.
 
-The project audits whether an adaptive reward-weight controller in REINVENT4 responds to an independent validation signal, rather than to the same scores used to train the molecular generator. The contribution is a reporting and diagnostic standard for validation-driven molecular RL controllers, not a claim that the tested controller improves molecular generation. The repository contains the controller wrapper, local analysis scripts, configuration files, aggregate results, manuscript figures, and the current LaTeX draft used for the diagnostic study.
+## Current Release
 
-## Repository Contents
+The submission-aligned package is frozen at
+[`release/jcheminformatics-2026/`](release/jcheminformatics-2026/README.md).
+It contains the code snapshots, locked protocols, audit outputs, source data,
+final figures, and row-level molecular supplement supporting the revised study.
 
-- `03_dynamic_weight_controller.py` - REINVENT4 wrapper/controller implementation.
-- `configs/` - TOML configuration files for baseline, dynamic, random-validation, and activity/SA experiments.
-- `scripts/` - local analysis, validation, docking-calibration, figure-generation, positive-control, and hindsight scripts.
-- `results/` - lightweight aggregate result files used in the manuscript.
-- `figures/` - editable SVG and PDF manuscript figures.
-- `docs/` - experiment plans and diagnostic reports.
-- `docs/dynaopt_audit/` - planned DynaOpt reproduction/audit instructions using shuffled-feedback controls.
-- `manuscript/` - current LaTeX draft.
+The confirmatory design includes:
 
-Server-specific remote execution helpers, raw checkpoints, dependency caches, and raw large generation logs are intentionally excluded.
+- temporal-preserving circular-shift placebos and phase-matched cross-seed replay;
+- validation-compute and random-number-generator-matched frozen controls;
+- separate RF training reward, SVM controller feedback, and untouched MPN evaluation;
+- equal and development-selected static scalarizations;
+- a locked alpha=0.25 experiment with 10 paired seeds and 70 runs; and
+- an end-to-end semi-synthetic positive control.
 
-## Main Results Included
+The tested controller did not demonstrate a practically meaningful advantage at
+the prespecified margin. This repository supports a diagnostic-framework claim,
+not a general claim that adaptive weighting improves or cannot improve molecular
+generation.
 
-The included aggregate results support the diagnostic conclusion that the tested controllers did not show a reliable validation-specific advantage:
+## Repository Layout
 
-- DRD2/QED/MW ten-repeat paired real-vs-random result:
-  - mean delta: `-0.0016`
-  - 95% paired-bootstrap CI: `[-0.0102, +0.0063]`
-  - positive repeats: `5/10`
-- DRD2 activity/SA fast-gate result:
-  - mean delta: `-0.0007`
-  - 95% paired-bootstrap CI: `[-0.0038, +0.0022]`
-- GSK3B activity/SA portability smoke test:
-  - newly trained GSK3B RF/SVM QSAR pair
-  - SVM validation AUROC: `0.924`
-  - mean real-vs-random delta: `+0.0026`
-  - positive repeats: `1/3`
-  - real-vs-static delta: `-0.0009`
-- Static utility and molecule-quality checks:
-  - static equal-weight baselines were expanded to five repeats for DRD2 settings.
-  - generated-molecule sanity checks include validity, uniqueness, target-set novelty, diversity, QED, SA, molecular weight, PAINS/Brenk alerts, physicochemical distributions, scaffold enrichment, and nearest-neighbor similarity to target actives.
-- Hyperparameter scan:
-  - included as exploratory only, with two paired repeats per setting.
+- `release/jcheminformatics-2026/code/`: frozen controller and analysis code.
+- `release/jcheminformatics-2026/protocols/`: locked experimental protocols.
+- `release/jcheminformatics-2026/paper_data/`: machine-readable table data.
+- `release/jcheminformatics-2026/figure_source_data/`: source data for Figures 2-5.
+- `release/jcheminformatics-2026/figures/`: final PDF figures.
+- `release/jcheminformatics-2026/audit_outputs/`: placebo and RNG qualification records.
+- `release/jcheminformatics-2026/additional_file_3/`: 224,000 row generated-molecule supplement and metadata.
+
+The manuscript source is intentionally excluded from this public repository.
+
+## Integrity Check
+
+On Linux, verify every frozen artifact with:
+
+```bash
+cd release/jcheminformatics-2026
+sha256sum --check MANIFEST.sha256
+gzip --test additional_file_3/Additional_file_3_generated_molecule_records.csv.gz
+```
+
+The compressed molecular supplement has SHA-256
+`78098e09d0dfae705aa53f7ff8a6d3baa6dbdbb785e9d40ace704c276f54c388`.
+
+## Historical Material
+
+The repository state preceding submission cleanup is preserved on the
+`legacy/pre-jcheminformatics-cleanup` branch. It contains exploratory analyses,
+obsolete shuffle-history controls, an earlier manuscript draft, and unrelated
+planning notes. Those materials are retained only for provenance and must not be
+used as the current analysis.
 
 ## Environment
 
-The experiments were run with REINVENT4 and RDKit. A typical analysis environment needs:
+Analysis scripts require Python 3.10 or newer. Common dependencies are listed in
+`requirements.txt`. Install them with `pip install -r requirements.txt` in an
+isolated environment.
 
-```bash
-python >= 3.10
-rdkit
-numpy
-scipy
-scikit-learn
-pandas
-matplotlib
-seaborn
-tomlkit
-```
+The frozen tables, figures, and reported contrasts can be checked from the
+included machine-readable data. Re-running molecular RL training additionally
+requires REINVENT4 model files, trained oracle weights, source configurations,
+and the original software environment; these large or restricted assets are not
+redistributed here. Server launch scripts are retained as provenance snapshots
+and contain the paths used during the study, which must be adapted in another
+environment.
 
-Install the Python-side analysis dependencies with:
+## License And Citation
 
-```bash
-pip install -r requirements.txt
-```
-
-REINVENT4 itself should be installed following the official REINVENT4 instructions. This repository does not vendor REINVENT4 or modify REINVENT4 core source files.
-
-## Reproducing Analyses
-
-Examples:
-
-```bash
-python scripts/controller_effect_statistics.py
-python scripts/positive_control_sensitivity_ladder.py
-python scripts/qsar_signal_independence.py
-python scripts/qsar_vina_triangulation.py
-python scripts/make_manuscript_figures.py
-python scripts/manuscript_additional_tables.py --root . --output-prefix manuscript --quality
-```
-
-The exact REINVENT4 training runs require trained QSAR models and the corresponding REINVENT4 prior/model files. Large generated molecule CSVs and checkpoints are not included in this lightweight GitHub package; the aggregate outputs needed to reproduce manuscript-level tables and figures are included under `results/`.
-
-## DynaOpt Audit Notes
-
-The `docs/dynaopt_audit/` directory contains planning material for auditing MichiganNLP/DynaOpt. Because DynaOpt updates its Exp3 bandit from training rewards rather than from an independent validation signal, its control should be called a random-feedback or shuffled-feedback control, not a random-validation control. The proposed intervention only shuffles the reward passed into `Exp3.__call__(reward, choice)` for bandit weight updates; it must not change the generator training reward, loss, or text-generation path.
-
-## Safety and Scope
-
-This repository is a reproducibility artifact, not a production drug-discovery pipeline. Docking scripts are included for protocol transparency, but the manuscript concludes that the current DRD2 docking calibration was insufficient as a reliable controller oracle.
-
-## Citation
-
-Please cite the accompanying manuscript when available. A provisional `CITATION.cff` is included and should be updated with final author, DOI, and publication metadata before release.
+Code is released under the MIT License. Data provenance and source restrictions
+are described in the protocols and accompanying manuscript. Citation metadata is
+provided in `CITATION.cff` and should be updated with the article DOI after
+publication.

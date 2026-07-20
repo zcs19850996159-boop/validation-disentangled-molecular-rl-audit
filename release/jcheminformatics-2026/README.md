@@ -38,12 +38,35 @@ well below the reported precision.
 
 ## Large row-level supplement
 
-`Additional_file_3_generated_molecule_records.csv.gz` is a 13 MB compressed,
+`Additional_file_3_generated_molecule_records.csv.gz` is an included 13 MB compressed,
 224,000-row supplement with SHA-256
 `78098e09d0dfae705aa53f7ff8a6d3baa6dbdbb785e9d40ace704c276f54c388`.
-Its schema and provenance metadata are included here. The compressed CSV is
-distributed with the manuscript supplementary files and should be included in
-the archival release without recompression.
+Its schema and provenance metadata are included here. The compressed CSV should
+be deposited with the manuscript supplementary files and archived without
+recompression.
+
+## Integrity verification
+
+From this directory on Linux, run:
+
+```bash
+sha256sum --check MANIFEST.sha256
+gzip --test additional_file_3/Additional_file_3_generated_molecule_records.csv.gz
+```
+
+The manifest intentionally excludes itself and the manuscript source. The
+manuscript source is not part of the public code and data release.
+
+## Reproduction boundary
+
+The included machine-readable data support independent verification of the
+reported tables, figures, seed-level contrasts, and audit summaries. A complete
+re-run of molecular RL training also requires the original REINVENT4 prior and
+agent files, fitted RF/SVM/MPN oracle weights, source configurations, and
+software environment. Those large or restricted assets are not redistributed.
+The shell launchers under `code/work/` are frozen provenance snapshots and retain
+the server paths used in the study; users must adapt those paths when deploying
+the code elsewhere.
 
 ## License
 
