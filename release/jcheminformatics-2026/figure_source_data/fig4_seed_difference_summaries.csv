@@ -1,0 +1,4 @@
+comparator,endpoint,n,mean_difference,median_difference,sample_sd,ci95_low,ci95_high,positive_count,negative_count,zero_count,sign_test_p,practical_threshold,mean_exceeds_threshold
+circular_mean,mpn_probability_ad_mean,10,-0.0003161953155856,-0.0087895384379718,0.0219047150478953,-0.0121154186491039,0.0134055012003374,4,6,0,0.75390625,0.015,False
+circular_mean,mpn_probability_all_valid_mean,10,0.0078810940649671,0.0085052155658667,0.0094479419687976,0.00223500758281,0.0133347511478048,7,3,0,0.34375,0.015,False
+circular_mean,svm_activity_mean,10,0.0023616122125021,0.0011963666036333,0.0109184139819814,-0.00327295763879,0.0094569534379013,7,3,0,0.34375,0.015,False

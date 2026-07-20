@@ -1,0 +1,41 @@
+{
+  "analysis_script_sha256": "408800de5df757ab6cbc2ec68a936aabe3689c39ec9f988bb5cb6e9bd92ff304",
+  "columns": [
+    "run_id",
+    "arm",
+    "seed",
+    "circular_replicate",
+    "donor_seed",
+    "step",
+    "sample_index",
+    "raw_smiles",
+    "valid",
+    "canonical_smiles",
+    "svm_activity",
+    "mpn_probability",
+    "ad_covered",
+    "max_training_tanimoto",
+    "qed",
+    "molecular_weight",
+    "mw_target_score",
+    "bemis_murcko_scaffold"
+  ],
+  "description": "Row-level generated-molecule records for frozen steps 251-300.",
+  "frozen_results_sha256": "67b6e2eec5a113a8f58bb8d7032571b9cd814d082fbca4e1d631a8db5c22c519",
+  "frozen_summary_match": true,
+  "frozen_summary_match_tolerance": 1e-08,
+  "n_runs": 70,
+  "n_verified_run_manifests": 70,
+  "oracle_checkpoint_sha256": "603e0afd60bf5053ff75341feef806796057ef3c18157708e194a9b3d1dfe2b7",
+  "oracle_data_sha256": "8875ea38c371522427b4989491242d3f6d89f83a349e2d91e875f6a6729ddf86",
+  "oracle_report_sha256": "ae4de849d88665640fc0c0b9455eb91cccbe1f3cc26cad295d51b9c0b39f800c",
+  "output_sha256": "78098e09d0dfae705aa53f7ff8a6d3baa6dbdbb785e9d40ace704c276f54c388",
+  "row_count": 224000,
+  "svm_model_sha256": "8f7d80e98871f3068e992262778104f45e2232eea6b3eb1aa1cbca0f23170183",
+  "tail_steps": [
+    251,
+    300
+  ],
+  "unique_valid_canonical_smiles": 217423,
+  "valid_row_count": 221015
+}
