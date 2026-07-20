@@ -1,0 +1,30 @@
+{
+  "agent_update_trace": {
+    "mismatches": [],
+    "passed": true
+  },
+  "checkpoint_network": {
+    "frozen_network_hash": "06293a493f96a25bdf69cb8b89352786c613662c18853233434e14cb261a3a86",
+    "mismatches": [],
+    "ordinary_network_hash": "06293a493f96a25bdf69cb8b89352786c613662c18853233434e14cb261a3a86",
+    "passed": true,
+    "raw_checkpoint_sha256": {
+      "frozen": "ab0c616bd6796332ffa6a246c4fb49df1efeedbbe6387f6b1adf05deef3e6abd",
+      "ordinary": "c7d87db1ed2d5ef8fc34b32263f2748f743d4ae6b7256989eeeb5733b651d9bd"
+    }
+  },
+  "final_agent_state_hash": {
+    "frozen": "601ede2c2ec6b866d7305e909996d7764ed78d92eec66d7ae95f4ac66caac340",
+    "ordinary": "601ede2c2ec6b866d7305e909996d7764ed78d92eec66d7ae95f4ac66caac340"
+  },
+  "frozen_validation": {
+    "all_rng_hashes_unchanged": true,
+    "all_weights_fixed": true,
+    "n_validation_events": 2
+  },
+  "passed": true,
+  "training_score_trace": {
+    "mismatches": [],
+    "passed": true
+  }
+}

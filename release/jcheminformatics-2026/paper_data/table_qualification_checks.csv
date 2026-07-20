@@ -1,0 +1,16 @@
+qualification,metric,value,gate
+frozen_weight_rng_match,overall_pass,True,true
+frozen_weight_rng_match,validation_events,6,6
+frozen_weight_rng_match,rng_unchanged,True,true
+frozen_weight_rng_match,network_hash_equal,True,true
+concurrent_worker_determinism,overall_pass,True,true
+bindingdb_mpn,test_auroc,0.8263888888888888,>=0.70
+bindingdb_mpn,test_average_precision,0.9093246010525422,>=prevalence+0.10
+bindingdb_mpn,test_brier,0.2461918891868586,<=0.25
+bindingdb_mpn,test_ece,0.24528716939671982,reported_not_gated
+bindingdb_mpn,mean_real_generated_ad_coverage,0.04385239915391352,reported_not_gated
+v5_end_to_end,overall_pass,True,true
+v5_end_to_end,mean_qed_gain,0.12579214762739083,>=0.050
+v5_end_to_end,positive_qed_gains,5,5/5
+v5_end_to_end,mean_validity_difference,0.006937499999999952,>=-0.02
+v5_end_to_end,mean_uniqueness_difference,-0.0001893748365716652,>=-0.02

@@ -1,0 +1,329 @@
+{
+  "circular_shift": {
+    "eligible_shift_max": 11,
+    "eligible_shift_min": 4,
+    "eligible_shifts": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "history_length": 15,
+    "replicate_indices": [
+      0,
+      1,
+      2
+    ],
+    "schedule_seed": 51001,
+    "shift_mapping": [
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "17",
+        "selected_shifts": {
+          "0": 8,
+          "1": 10,
+          "2": 11
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_db002_seed17.jsonl",
+        "target_history_sha256": "464723cb45d42595ae2de36f76571d53835c186637559e9bdd8f5923c12411e4"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "23",
+        "selected_shifts": {
+          "0": 9,
+          "1": 8,
+          "2": 10
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed23.jsonl",
+        "target_history_sha256": "b5ded6a5adea26b1735c785228f734d4e9b9f7ca7875e2f6bcb3a1a79bb35b84"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "101",
+        "selected_shifts": {
+          "0": 9,
+          "1": 7,
+          "2": 4
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed101.jsonl",
+        "target_history_sha256": "e15711a363dd57e7220c352b993963d293953db466fa30d481575c73a2a4e18d"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "202",
+        "selected_shifts": {
+          "0": 4,
+          "1": 7,
+          "2": 6
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed202.jsonl",
+        "target_history_sha256": "a9045b11a6dc0a08b64b5a3af4126addec59f18df93940c633b8a7b53eff41af"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "303",
+        "selected_shifts": {
+          "0": 4,
+          "1": 5,
+          "2": 9
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed303.jsonl",
+        "target_history_sha256": "98a0cdc313a0596239f49ba5afb166a3c64003aeb179d20ea93f5994c72321b7"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "404",
+        "selected_shifts": {
+          "0": 9,
+          "1": 5,
+          "2": 10
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed404.jsonl",
+        "target_history_sha256": "f86fe0e2918880de69fe014c169dbd940c09eda5b0c983cf7b2974fef446c529"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "505",
+        "selected_shifts": {
+          "0": 5,
+          "1": 7,
+          "2": 10
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed505.jsonl",
+        "target_history_sha256": "82594e64457004fe5132bc823c497dbf73e4a37dc5631c18d175e7be9d85e057"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "606",
+        "selected_shifts": {
+          "0": 6,
+          "1": 5,
+          "2": 4
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed606.jsonl",
+        "target_history_sha256": "c641f6dd5467bcfb2cef043fb4579c924dd71f46eddf9a2fab506db6679f9dfd"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "707",
+        "selected_shifts": {
+          "0": 9,
+          "1": 8,
+          "2": 5
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed707.jsonl",
+        "target_history_sha256": "df58d6d45270565d84f357099de4f7230ef8b3374639743b06b848668ac27ae8"
+      },
+      {
+        "eligible_shifts": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "seed": "808",
+        "selected_shifts": {
+          "0": 8,
+          "1": 5,
+          "2": 7
+        },
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed808.jsonl",
+        "target_history_sha256": "069b0b38a04d8d744030d0be56fa7dd5cf53356bbcb7361f814948285c16dd4c"
+      }
+    ],
+    "within_seed_analysis": "Mean placebo outcomes over replicate indices 0, 1, and 2 before cross-seed analysis."
+  },
+  "controller": {
+    "action_step": 0.15,
+    "component_names": [
+      "DRD2_activity",
+      "QED",
+      "Molecular weight"
+    ],
+    "deadband": 0.02,
+    "decrease_on_improvement": false,
+    "initial_weights": {
+      "DRD2_activity": 0.34,
+      "Molecular weight": 0.33,
+      "QED": 0.33
+    }
+  },
+  "cross_seed_phase_matched": {
+    "mapping_rule": "Supplied real histories in order: target i -> donor i + 1 (mod n)",
+    "pairs": [
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed23.jsonl",
+        "donor_history_sha256": "b5ded6a5adea26b1735c785228f734d4e9b9f7ca7875e2f6bcb3a1a79bb35b84",
+        "donor_seed": "23",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_db002_seed17.jsonl",
+        "target_history_sha256": "464723cb45d42595ae2de36f76571d53835c186637559e9bdd8f5923c12411e4",
+        "target_seed": "17"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed101.jsonl",
+        "donor_history_sha256": "e15711a363dd57e7220c352b993963d293953db466fa30d481575c73a2a4e18d",
+        "donor_seed": "101",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed23.jsonl",
+        "target_history_sha256": "b5ded6a5adea26b1735c785228f734d4e9b9f7ca7875e2f6bcb3a1a79bb35b84",
+        "target_seed": "23"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed202.jsonl",
+        "donor_history_sha256": "a9045b11a6dc0a08b64b5a3af4126addec59f18df93940c633b8a7b53eff41af",
+        "donor_seed": "202",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed101.jsonl",
+        "target_history_sha256": "e15711a363dd57e7220c352b993963d293953db466fa30d481575c73a2a4e18d",
+        "target_seed": "101"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed303.jsonl",
+        "donor_history_sha256": "98a0cdc313a0596239f49ba5afb166a3c64003aeb179d20ea93f5994c72321b7",
+        "donor_seed": "303",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed202.jsonl",
+        "target_history_sha256": "a9045b11a6dc0a08b64b5a3af4126addec59f18df93940c633b8a7b53eff41af",
+        "target_seed": "202"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed404.jsonl",
+        "donor_history_sha256": "f86fe0e2918880de69fe014c169dbd940c09eda5b0c983cf7b2974fef446c529",
+        "donor_seed": "404",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed303.jsonl",
+        "target_history_sha256": "98a0cdc313a0596239f49ba5afb166a3c64003aeb179d20ea93f5994c72321b7",
+        "target_seed": "303"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed505.jsonl",
+        "donor_history_sha256": "82594e64457004fe5132bc823c497dbf73e4a37dc5631c18d175e7be9d85e057",
+        "donor_seed": "505",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed404.jsonl",
+        "target_history_sha256": "f86fe0e2918880de69fe014c169dbd940c09eda5b0c983cf7b2974fef446c529",
+        "target_seed": "404"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed606.jsonl",
+        "donor_history_sha256": "c641f6dd5467bcfb2cef043fb4579c924dd71f46eddf9a2fab506db6679f9dfd",
+        "donor_seed": "606",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed505.jsonl",
+        "target_history_sha256": "82594e64457004fe5132bc823c497dbf73e4a37dc5631c18d175e7be9d85e057",
+        "target_seed": "505"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed707.jsonl",
+        "donor_history_sha256": "df58d6d45270565d84f357099de4f7230ef8b3374639743b06b848668ac27ae8",
+        "donor_seed": "707",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed606.jsonl",
+        "target_history_sha256": "c641f6dd5467bcfb2cef043fb4579c924dd71f46eddf9a2fab506db6679f9dfd",
+        "target_seed": "606"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed808.jsonl",
+        "donor_history_sha256": "069b0b38a04d8d744030d0be56fa7dd5cf53356bbcb7361f814948285c16dd4c",
+        "donor_seed": "808",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed707.jsonl",
+        "target_history_sha256": "df58d6d45270565d84f357099de4f7230ef8b3374639743b06b848668ac27ae8",
+        "target_seed": "707"
+      },
+      {
+        "donor_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_db002_seed17.jsonl",
+        "donor_history_sha256": "464723cb45d42595ae2de36f76571d53835c186637559e9bdd8f5923c12411e4",
+        "donor_seed": "17",
+        "target_history": "work/four_project_snapshot/controller_history_drd2_qsar_deterministic_mg_seed808.jsonl",
+        "target_history_sha256": "069b0b38a04d8d744030d0be56fa7dd5cf53356bbcb7361f814948285c16dd4c",
+        "target_seed": "808"
+      }
+    ],
+    "selection_uses_similarity_or_outcomes": false
+  },
+  "purpose": "Frozen temporal placebo plan",
+  "schema_version": 1
+}
