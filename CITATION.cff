@@ -1,10 +1,15 @@
 cff-version: 1.2.0
-title: "Validation-disentangled molecular RL audit"
-message: "Please cite the accompanying manuscript and this repository."
+title: "Validation-Disentangled Molecular RL Audit"
+message: "Please cite the accompanying manuscript and this software repository."
 type: software
 authors:
-  - family-names: "Author"
-    given-names: "First"
+  - family-names: "Zhang"
+    given-names: "Chensen"
+  - family-names: "Liao"
+    given-names: "Wei"
 repository-code: "https://github.com/zcs19850996159-boop/validation-disentangled-molecular-rl-audit"
-abstract: "Reproducibility package for a validation-disentangled diagnostic and reporting framework for adaptive reward weighting in REINVENT4 molecular generation."
+version: "jcheminformatics-2026"
+abstract: >-
+  Reproducibility package for a validation-disentangled diagnostic framework
+  for adaptive reward weighting in REINVENT4 molecular generation.
 license: MIT
